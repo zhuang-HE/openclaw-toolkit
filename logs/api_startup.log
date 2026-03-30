@@ -1,0 +1,69 @@
+2026-03-25 15:29:03,521 - robot_api - INFO - ============================================================
+2026-03-25 15:29:03,521 - robot_api - INFO - 机器人数据库 API 服务启动
+2026-03-25 15:29:03,521 - robot_api - INFO - 数据库路径：/home/admin/.openclaw/workspace/机器人数据库_核心版.csv
+2026-03-25 15:29:03,521 - robot_api - INFO - API 端口：8000
+2026-03-25 15:29:03,521 - robot_api - INFO - 文档地址：http://localhost:8000/docs
+2026-03-25 15:29:03,521 - robot_api - INFO - ============================================================
+2026-03-25 15:29:03,527 - robot_api - INFO - 加载数据库：24 条记录
+2026-03-25 15:29:03,529 - robot_api - INFO - 数据库加载成功：24 条记录
+INFO:     Started server process [131331]
+2026-03-25 15:29:03,542 - uvicorn.error - INFO - Started server process [131331]
+INFO:     Waiting for application startup.
+2026-03-25 15:29:03,543 - uvicorn.error - INFO - Waiting for application startup.
+INFO:     Application startup complete.
+2026-03-25 15:29:03,543 - uvicorn.error - INFO - Application startup complete.
+INFO:     Uvicorn running on http://0.0.0.0:8000 (Press CTRL+C to quit)
+2026-03-25 15:29:03,543 - uvicorn.error - INFO - Uvicorn running on http://0.0.0.0:8000 (Press CTRL+C to quit)
+INFO:     127.0.0.1:58234 - "GET /health HTTP/1.1" 200 OK
+2026-03-25 15:29:36,147 - robot_api - INFO - API 请求 - Key: Demo Key
+INFO:     127.0.0.1:58246 - "GET /api/stats HTTP/1.1" 200 OK
+INFO:     127.0.0.1:40528 - "GET /health HTTP/1.1" 200 OK
+2026-03-25 15:30:46,574 - robot_api - INFO - API 请求 - Key: Demo Key
+2026-03-25 15:30:46,577 - robot_api - INFO - 加载数据库：24 条记录
+INFO:     127.0.0.1:40536 - "GET /api/stats HTTP/1.1" 200 OK
+WARNING:  Invalid HTTP request received.
+Traceback (most recent call last):
+  File "/home/admin/.local/lib/python3.6/site-packages/uvicorn/protocols/http/h11_impl.py", line 136, in handle_events
+    event = self.conn.next_event()
+  File "/usr/local/lib/python3.6/site-packages/h11/_connection.py", line 443, in next_event
+    exc._reraise_as_remote_protocol_error()
+  File "/usr/local/lib/python3.6/site-packages/h11/_util.py", line 76, in _reraise_as_remote_protocol_error
+    raise self
+  File "/usr/local/lib/python3.6/site-packages/h11/_connection.py", line 425, in next_event
+    event = self._extract_next_receive_event()
+  File "/usr/local/lib/python3.6/site-packages/h11/_connection.py", line 367, in _extract_next_receive_event
+    event = self._reader(self._receive_buffer)
+  File "/usr/local/lib/python3.6/site-packages/h11/_readers.py", line 73, in maybe_read_from_IDLE_client
+    request_line_re, lines[0], "illegal request line: {!r}", lines[0]
+  File "/usr/local/lib/python3.6/site-packages/h11/_util.py", line 88, in validate
+    raise LocalProtocolError(msg)
+h11._util.RemoteProtocolError: illegal request line: bytearray(b'GET /api/robots/search?q=\xe4\xba\xba\xe5\xbd\xa2&page_size=3 HTTP/1.1')
+2026-03-25 15:30:46,591 - uvicorn.error - WARNING - Invalid HTTP request received.
+Traceback (most recent call last):
+  File "/home/admin/.local/lib/python3.6/site-packages/uvicorn/protocols/http/h11_impl.py", line 136, in handle_events
+    event = self.conn.next_event()
+  File "/usr/local/lib/python3.6/site-packages/h11/_connection.py", line 443, in next_event
+    exc._reraise_as_remote_protocol_error()
+  File "/usr/local/lib/python3.6/site-packages/h11/_util.py", line 76, in _reraise_as_remote_protocol_error
+    raise self
+  File "/usr/local/lib/python3.6/site-packages/h11/_connection.py", line 425, in next_event
+    event = self._extract_next_receive_event()
+  File "/usr/local/lib/python3.6/site-packages/h11/_connection.py", line 367, in _extract_next_receive_event
+    event = self._reader(self._receive_buffer)
+  File "/usr/local/lib/python3.6/site-packages/h11/_readers.py", line 73, in maybe_read_from_IDLE_client
+    request_line_re, lines[0], "illegal request line: {!r}", lines[0]
+  File "/usr/local/lib/python3.6/site-packages/h11/_util.py", line 88, in validate
+    raise LocalProtocolError(msg)
+h11._util.RemoteProtocolError: illegal request line: bytearray(b'GET /api/robots/search?q=\xe4\xba\xba\xe5\xbd\xa2&page_size=3 HTTP/1.1')
+2026-03-25 15:30:46,613 - robot_api - INFO - API 请求 - Key: Demo Key
+INFO:     127.0.0.1:40542 - "GET /api/companies HTTP/1.1" 200 OK
+2026-03-25 15:30:46,643 - robot_api - INFO - API 请求 - Key: Demo Key
+INFO:     127.0.0.1:40546 - "GET /api/accidents/stats HTTP/1.1" 200 OK
+INFO:     Shutting down
+2026-03-25 15:59:03,067 - uvicorn.error - INFO - Shutting down
+INFO:     Waiting for application shutdown.
+2026-03-25 15:59:03,168 - uvicorn.error - INFO - Waiting for application shutdown.
+INFO:     Application shutdown complete.
+2026-03-25 15:59:03,168 - uvicorn.error - INFO - Application shutdown complete.
+INFO:     Finished server process [131331]
+2026-03-25 15:59:03,168 - uvicorn.error - INFO - Finished server process [131331]

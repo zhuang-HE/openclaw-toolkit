@@ -1,0 +1,43 @@
+2026-03-25 15:15:23,876 - robot_collector - INFO - 机器人数据收集系统启动
+2026-03-25 15:15:23,877 - robot_collector - INFO - ============================================================
+2026-03-25 15:15:23,877 - robot_collector - INFO - 开始执行机器人数据收集任务
+2026-03-25 15:15:23,877 - robot_collector - INFO - Token 剩余：1,000,000 / 1,000,000
+2026-03-25 15:15:23,877 - robot_collector - INFO - ============================================================
+2026-03-25 15:15:23,879 - robot_collector - INFO - 加载现有数据：174 条记录
+2026-03-25 15:15:23,879 - robot_collector - INFO - 步骤 1: 收集官方渠道数据...
+2026-03-25 15:15:23,879 - robot_collector - INFO - 步骤 2: 收集行业平台数据...
+2026-03-25 15:15:23,879 - robot_collector - INFO - 步骤 3: 检查价格更新...
+2026-03-25 15:15:23,879 - robot_collector - INFO - 开始检查 174 款产品的价格更新
+2026-03-25 15:15:23,879 - robot_collector - INFO - 已检查 0/174 款产品
+2026-03-25 15:15:23,879 - robot_collector - INFO - 已检查 10/174 款产品
+2026-03-25 15:15:23,879 - robot_collector - INFO - 已检查 20/174 款产品
+2026-03-25 15:15:23,879 - robot_collector - INFO - 已检查 30/174 款产品
+2026-03-25 15:15:23,879 - robot_collector - INFO - 已检查 40/174 款产品
+2026-03-25 15:15:23,879 - robot_collector - INFO - 已检查 50/174 款产品
+2026-03-25 15:15:23,879 - robot_collector - INFO - 已检查 60/174 款产品
+2026-03-25 15:15:23,879 - robot_collector - INFO - 已检查 70/174 款产品
+2026-03-25 15:15:23,879 - robot_collector - INFO - 已检查 80/174 款产品
+2026-03-25 15:15:23,879 - robot_collector - INFO - 已检查 90/174 款产品
+2026-03-25 15:15:23,879 - robot_collector - INFO - 已检查 100/174 款产品
+2026-03-25 15:15:23,879 - robot_collector - INFO - 已检查 110/174 款产品
+2026-03-25 15:15:23,879 - robot_collector - INFO - 已检查 120/174 款产品
+2026-03-25 15:15:23,879 - robot_collector - INFO - 已检查 130/174 款产品
+2026-03-25 15:15:23,879 - robot_collector - INFO - 已检查 140/174 款产品
+2026-03-25 15:15:23,879 - robot_collector - INFO - 已检查 150/174 款产品
+2026-03-25 15:15:23,879 - robot_collector - INFO - 已检查 160/174 款产品
+2026-03-25 15:15:23,879 - robot_collector - INFO - 已检查 170/174 款产品
+2026-03-25 15:15:23,879 - robot_collector - INFO - 步骤 4: 收集事故数据...
+2026-03-25 15:15:23,879 - robot_collector - INFO - 去重：174 -> 174
+2026-03-25 15:15:23,879 - robot_collector - INFO - 步骤 5: 保存数据库...
+2026-03-25 15:15:23,880 - robot_collector - ERROR - 保存数据库失败：dict contains fields not in fieldnames: None
+2026-03-25 15:15:23,880 - robot_collector - INFO - ============================================================
+2026-03-25 15:15:23,880 - robot_collector - INFO - 数据收集任务完成
+2026-03-25 15:15:23,880 - robot_collector - INFO - 新增公司：0
+2026-03-25 15:15:23,880 - robot_collector - INFO - 新增产品：0
+2026-03-25 15:15:23,880 - robot_collector - INFO - 更新产品：0
+2026-03-25 15:15:23,880 - robot_collector - INFO - 新增事故：0
+2026-03-25 15:15:23,880 - robot_collector - INFO - Token 使用：2,000 (0.2%)
+2026-03-25 15:15:23,880 - robot_collector - INFO - ============================================================
+2026-03-25 15:15:23,880 - robot_collector - INFO - 日报已保存：/home/admin/.openclaw/workspace/reports/2026-03-25_机器人数据收集日报.md
+2026-03-25 15:15:23,880 - robot_collector - INFO - 日报已生成：/home/admin/.openclaw/workspace/reports/2026-03-25_机器人数据收集日报.md
+2026-03-25 15:15:23,880 - robot_collector - INFO - 系统运行完成

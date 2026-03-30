@@ -1,0 +1,21 @@
+{
+  "api_keys": {
+    "sk_robot_demo_key_123456": {
+      "name": "Demo Key",
+      "permission": "read",
+      "created_at": "2026-03-25",
+      "expires_at": null,
+      "rate_limit": 60,
+      "enabled": true
+    },
+    "sk_robot_ai_agent_001": {
+      "name": "AI Agent Key",
+      "permission": "read",
+      "created_at": "2026-03-25",
+      "expires_at": null,
+      "rate_limit": 100,
+      "enabled": true
+    }
+  },
+  "notes": "API Key 配置文件 - 生产环境请妥善保管"
+}

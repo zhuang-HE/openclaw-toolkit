@@ -1,0 +1,27 @@
+{
+  "msg_type": "interactive",
+  "card": {
+    "header": {
+      "title": {
+        "tag": "plain_text",
+        "content": "📊 金融数据简报 - 盘后"
+      },
+      "template": "blue"
+    },
+    "elements": [
+      {
+        "tag": "markdown",
+        "content": "**采集时间**: 2026-03-13 12:09\n\n---\n\n**📈 全球指数**\n\n**💱 人民币汇率**\n\n**🛢️ 大宗商品**\n\n💰 北向资金：数据暂缺\n🏆 涨跌停：涨停 0 家 | 跌停 0 家"
+      },
+      {
+        "tag": "note",
+        "elements": [
+          {
+            "tag": "plain_text",
+            "content": "数据源：新浪财经、东方财富、中国银行"
+          }
+        ]
+      }
+    ]
+  }
+}

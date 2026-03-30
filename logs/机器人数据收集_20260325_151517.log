@@ -1,0 +1,19 @@
+2026-03-25 15:15:17,238 - robot_collector - INFO - 机器人数据收集系统启动
+2026-03-25 15:15:17,238 - robot_collector - INFO - ============================================================
+2026-03-25 15:15:17,238 - robot_collector - INFO - 开始执行机器人数据收集任务
+2026-03-25 15:15:17,238 - robot_collector - INFO - Token 剩余：1,000,000 / 1,000,000
+2026-03-25 15:15:17,238 - robot_collector - INFO - ============================================================
+2026-03-25 15:15:17,240 - robot_collector - INFO - 加载现有数据：174 条记录
+2026-03-25 15:15:17,240 - robot_collector - INFO - 步骤 1: 收集官方渠道数据...
+2026-03-25 15:15:17,240 - robot_collector - INFO - 步骤 2: 收集行业平台数据...
+2026-03-25 15:15:17,240 - robot_collector - INFO - 步骤 3: 检查价格更新...
+2026-03-25 15:15:17,240 - robot_collector - INFO - 开始检查 174 款产品的价格更新
+2026-03-25 15:15:17,240 - robot_collector - ERROR - 系统异常：'TokenManager' object has no attribute 'TOKEN_COST_PER_REQUEST'
+Traceback (most recent call last):
+  File "scripts/机器人数据收集自动化.py", line 507, in main
+    stats = collector.run_collection()
+  File "scripts/机器人数据收集自动化.py", line 337, in run_collection
+    price_updates = self.check_price_updates(existing_data)
+  File "scripts/机器人数据收集自动化.py", line 270, in check_price_updates
+    if not self.token_manager.can_use(self.token_manager.TOKEN_COST_PER_REQUEST * 2):
+AttributeError: 'TokenManager' object has no attribute 'TOKEN_COST_PER_REQUEST'

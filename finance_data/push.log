@@ -1,0 +1,308 @@
+========================================
+🚀 金融数据推送 - 盘后
+📅 时间：2026-03-13 16:00:02
+========================================
+正在获取全球指数...
+  ✓ 4 个指数
+正在获取外汇汇率...
+  ✓ 4 个货币
+正在获取大宗商品...
+  ✓ 4 个商品
+正在获取北向资金...
+正在获取涨跌停...
+涨跌停获取失败：('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))
+✅ 飞书消息发送成功
+💾 备份：./finance_data/push_backup/push_20260313_160003.json
+========================================
+🚀 金融数据推送 - 盘前
+📅 时间：2026-03-16 09:30:01
+========================================
+正在获取全球指数...
+  ✓ 6 个指数
+正在获取人民币汇率...
+  ✓ 4 个货币
+正在获取大宗商品（雅虎财经）...
+  ✓ 4 个商品
+正在获取北向资金...
+  ✓ 0.00 亿元
+正在获取涨跌停...
+  ✓ 涨停40家 跌停4家
+❌ 发送失败：{'code': 11232, 'data': {}, 'msg': 'frequency limited psm[lark.oapi.app_platform_runtime]appID[1500]'}
+💾 备份：./finance_data/push_backup/push_20260316_093008.json
+========================================
+🚀 金融数据推送 - 盘后
+📅 时间：2026-03-16 15:30:01
+========================================
+正在获取全球指数...
+  上证指数 失败：('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))
+  深证成指 失败：('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))
+  创业板指 失败：('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))
+  科创板 失败：('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))
+  恒生科技 失败：('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))
+  ✓ 2 个指数
+正在获取人民币汇率...
+  ✓ 4 个货币
+正在获取大宗商品（雅虎财经）...
+  ✓ 4 个商品
+正在获取北向资金...
+  ✓ 0.00 亿元
+正在获取涨跌停...
+  ✓ 涨停72家 跌停15家
+✅ 飞书消息发送成功
+💾 备份：./finance_data/push_backup/push_20260316_153006.json
+========================================
+🚀 金融数据推送 - 盘前
+📅 时间：2026-03-17 09:30:02
+========================================
+正在获取全球指数...
+  上证指数 失败：('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))
+  深证成指 失败：('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))
+  科创板 失败：('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))
+  ✓ 3 个指数
+正在获取人民币汇率...
+  ✓ 4 个货币
+正在获取大宗商品（雅虎财经）...
+  ✓ 4 个商品
+正在获取北向资金...
+  ✓ 0.00 亿元
+正在获取涨跌停...
+  ✓ 涨停30家 跌停8家
+✅ 飞书消息发送成功
+💾 备份：./finance_data/push_backup/push_20260317_093007.json
+========================================
+🚀 金融数据推送 - 盘后
+📅 时间：2026-03-17 15:30:01
+========================================
+正在获取全球指数...
+  上证指数 失败：('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))
+  深证成指 失败：('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))
+  创业板指 失败：('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))
+  科创板 失败：('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))
+  恒生科技 失败：('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))
+  ✓ 2 个指数
+正在获取人民币汇率...
+  ✓ 4 个货币
+正在获取大宗商品（雅虎财经）...
+  ✓ 4 个商品
+正在获取北向资金...
+  ✓ 0.00 亿元
+正在获取涨跌停...
+  ✓ 涨停46家 跌停12家
+✅ 飞书消息发送成功
+💾 备份：./finance_data/push_backup/push_20260317_153007.json
+========================================
+🚀 金融数据推送 - 盘前
+📅 时间：2026-03-18 09:30:01
+========================================
+正在获取全球指数...
+  ✓ 6 个指数
+正在获取人民币汇率...
+  ✓ 4 个货币
+正在获取大宗商品（雅虎财经）...
+  ✓ 4 个商品
+正在获取北向资金...
+  ✓ 0.00 亿元
+正在获取涨跌停...
+  ✓ 涨停63家 跌停3家
+✅ 飞书消息发送成功
+💾 备份：./finance_data/push_backup/push_20260318_093008.json
+========================================
+🚀 金融数据推送 - 盘后
+📅 时间：2026-03-18 15:30:02
+========================================
+正在获取全球指数...
+  上证指数 失败：('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))
+  深证成指 失败：('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))
+  创业板指 失败：('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))
+  科创板 失败：('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))
+  恒生科技 失败：('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))
+  ✓ 2 个指数
+正在获取人民币汇率...
+  ✓ 4 个货币
+正在获取大宗商品（雅虎财经）...
+  ✓ 4 个商品
+正在获取北向资金...
+  ✓ 0.00 亿元
+正在获取涨跌停...
+  ✓ 涨停42家 跌停3家
+✅ 飞书消息发送成功
+💾 备份：./finance_data/push_backup/push_20260318_153007.json
+========================================
+🚀 金融数据推送 - 盘前
+📅 时间：2026-03-19 09:30:01
+========================================
+正在获取全球指数...
+  上证指数 失败：('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))
+  深证成指 失败：('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))
+  创业板指 失败：('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))
+  科创板 失败：('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))
+  恒生科技 失败：('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))
+  ✓ 2 个指数
+正在获取人民币汇率...
+  ✓ 4 个货币
+正在获取大宗商品（雅虎财经）...
+  ✓ 4 个商品
+正在获取北向资金...
+  ✓ 0.00 亿元
+正在获取涨跌停...
+  ✓ 涨停77家 跌停7家
+✅ 飞书消息发送成功
+💾 备份：./finance_data/push_backup/push_20260319_093006.json
+========================================
+🚀 金融数据推送 - 盘后
+📅 时间：2026-03-19 15:30:02
+========================================
+正在获取全球指数...
+  ✓ 6 个指数
+正在获取人民币汇率...
+  ✓ 4 个货币
+正在获取大宗商品（雅虎财经）...
+  ✓ 4 个商品
+正在获取北向资金...
+  ✓ 0.00 亿元
+正在获取涨跌停...
+  ✓ 涨停63家 跌停14家
+✅ 飞书消息发送成功
+💾 备份：./finance_data/push_backup/push_20260319_153007.json
+========================================
+🚀 金融数据推送 - 盘前
+📅 时间：2026-03-20 09:30:01
+========================================
+正在获取全球指数...
+  上证指数 失败：('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))
+  深证成指 失败：('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))
+  创业板指 失败：('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))
+  科创板 失败：('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))
+  恒生科技 失败：('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))
+  ✓ 2 个指数
+正在获取人民币汇率...
+  ✓ 4 个货币
+正在获取大宗商品（雅虎财经）...
+  ✓ 4 个商品
+正在获取北向资金...
+  ✓ 0.00 亿元
+正在获取涨跌停...
+  ✓ 涨停77家 跌停4家
+✅ 飞书消息发送成功
+💾 备份：./finance_data/push_backup/push_20260320_093007.json
+========================================
+🚀 金融数据推送 - 盘后
+📅 时间：2026-03-20 15:30:02
+========================================
+正在获取全球指数...
+  上证指数 失败：('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))
+  深证成指 失败：('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))
+  创业板指 失败：('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))
+  科创板 失败：('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))
+  恒生科技 失败：('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))
+  ✓ 2 个指数
+正在获取人民币汇率...
+  ✓ 4 个货币
+正在获取大宗商品（雅虎财经）...
+  ✓ 4 个商品
+正在获取北向资金...
+  ✓ 0.00 亿元
+正在获取涨跌停...
+  ✓ 涨停67家 跌停11家
+❌ 发送失败：{'code': 11232, 'data': {}, 'msg': 'frequency limited psm[lark.oapi.app_platform_runtime]appID[1500]'}
+💾 备份：./finance_data/push_backup/push_20260320_153009.json
+========================================
+🚀 金融数据推送 - 盘前
+📅 时间：2026-03-23 09:30:01
+========================================
+正在获取全球指数...
+  ✓ 6 个指数
+正在获取人民币汇率...
+  ✓ 4 个货币
+正在获取大宗商品（雅虎财经）...
+  ✓ 4 个商品
+正在获取北向资金...
+  ✓ 0.00 亿元
+正在获取涨跌停...
+  ✓ 涨停49家 跌停9家
+✅ 飞书消息发送成功
+💾 备份：./finance_data/push_backup/push_20260323_093006.json
+========================================
+🚀 金融数据推送 - 盘后
+📅 时间：2026-03-23 15:30:02
+========================================
+正在获取全球指数...
+  上证指数 失败：('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))
+  深证成指 失败：('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))
+  创业板指 失败：('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))
+  科创板 失败：('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))
+  恒生科技 失败：('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))
+  ✓ 2 个指数
+正在获取人民币汇率...
+  ✓ 4 个货币
+正在获取大宗商品（雅虎财经）...
+  ✓ 4 个商品
+正在获取北向资金...
+  ✓ 0.00 亿元
+正在获取涨跌停...
+  ✓ 涨停56家 跌停9家
+✅ 飞书消息发送成功
+💾 备份：./finance_data/push_backup/push_20260323_153006.json
+========================================
+🚀 金融数据推送 - 盘前
+📅 时间：2026-03-24 09:30:01
+========================================
+正在获取全球指数...
+  上证指数 失败：('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))
+  深证成指 失败：('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))
+  创业板指 失败：('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))
+  科创板 失败：('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))
+  恒生科技 失败：('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))
+  ✓ 2 个指数
+正在获取人民币汇率...
+  ✓ 4 个货币
+正在获取大宗商品（雅虎财经）...
+  ✓ 4 个商品
+正在获取北向资金...
+  ✓ 0.00 亿元
+正在获取涨跌停...
+  ✓ 涨停32家 跌停11家
+✅ 飞书消息发送成功
+💾 备份：./finance_data/push_backup/push_20260324_093006.json
+========================================
+🚀 金融数据推送 - 盘后
+📅 时间：2026-03-24 15:30:02
+========================================
+正在获取全球指数...
+  上证指数 失败：('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))
+  深证成指 失败：('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))
+  创业板指 失败：('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))
+  科创板 失败：('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))
+  恒生科技 失败：('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))
+  ✓ 2 个指数
+正在获取人民币汇率...
+  ✓ 4 个货币
+正在获取大宗商品（雅虎财经）...
+  ✓ 4 个商品
+正在获取北向资金...
+  ✓ 0.00 亿元
+正在获取涨跌停...
+  ✓ 涨停53家 跌停12家
+❌ 发送失败：{'code': 11232, 'data': {}, 'msg': 'frequency limited psm[lark.oapi.app_platform_runtime]appID[1500]'}
+💾 备份：./finance_data/push_backup/push_20260324_153008.json
+========================================
+🚀 金融数据推送 - 盘前
+📅 时间：2026-03-25 09:30:01
+========================================
+正在获取全球指数...
+  上证指数 失败：('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))
+  深证成指 失败：('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))
+  创业板指 失败：('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))
+  科创板 失败：('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))
+  恒生科技 失败：('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))
+  ✓ 2 个指数
+正在获取人民币汇率...
+  ✓ 4 个货币
+正在获取大宗商品（雅虎财经）...
+  ✓ 4 个商品
+正在获取北向资金...
+  ✓ 0.00 亿元
+正在获取涨跌停...
+  ✓ 涨停59家 跌停7家
+✅ 飞书消息发送成功
+💾 备份：./finance_data/push_backup/push_20260325_093006.json

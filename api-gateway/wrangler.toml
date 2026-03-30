@@ -1,0 +1,37 @@
+# Cloudflare Workers 配置文件
+# 使用方法：npx wrangler deploy
+
+name = "robot-api-gateway"
+main = "worker.js"
+compatibility_date = "2024-01-01"
+
+# 环境变量（部署时通过 --var 或 wrangler.toml 设置）
+# 不要在此文件中直接写入敏感信息！
+# 使用：npx wrangler secret put FEISHU_APP_ID
+
+# KV 命名空间绑定
+[[kv_namespaces]]
+binding = "FEISHU_TOKEN_CACHE"
+id = "你的 KV Namespace ID"
+preview_id = "你的预览 KV Namespace ID"
+
+[[kv_namespaces]]
+binding = "RATE_LIMIT_KV"
+id = "你的 KV Namespace ID"
+preview_id = "你的预览 KV Namespace ID"
+
+# 环境变量
+[vars]
+FEISHU_BITABLE_APP_TOKEN = "XC2nbCyx3acaPls7bsRcVOBnnOh"
+# FEISHU_ROBOT_BITABLE_TOKEN = "你的机器人数据库 Token"
+# FEISHU_ROBOT_TABLE_ID = "你的机器人数据表 ID"
+
+# 部署环境配置
+[env.production]
+name = "robot-api-gateway-prod"
+routes = [
+  { pattern = "api.yourdomain.com/*", zone_name = "yourdomain.com" }
+]
+
+[env.staging]
+name = "robot-api-gateway-staging"
