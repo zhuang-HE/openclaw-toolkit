@@ -388,10 +388,26 @@ def send_alert_message(cases):
             }
         }
         
-        try:
-            requests.post(WEBHOOK_URL_ALERT, json=content, headers={"Content-Type": "application/json"})
-        except Exception as e:
-            logger.error(f"告警推送失败：{e}")
+        # 带重试的告警推送
+        max_retries = 3
+        for attempt in range(1, max_retries + 1):
+            try:
+                response = requests.post(WEBHOOK_URL_ALERT, json=content, headers={"Content-Type": "application/json"}, timeout=10)
+                result = response.json()
+                if result.get('code') == 0:
+                    logger.info("告警推送成功")
+                    break
+                elif result.get('code') == 11232:
+                    wait_time = 5 * (2 ** (attempt - 1))
+                    logger.warning(f"告警推送触发限流，等待 {wait_time} 秒...")
+                    time.sleep(wait_time)
+                else:
+                    logger.error(f"告警推送失败：{result}")
+                    break
+            except Exception as e:
+                logger.error(f"告警推送异常 (第 {attempt} 次): {e}")
+                if attempt < max_retries:
+                    time.sleep(5 * (2 ** (attempt - 1)))
     
     return len(alerts)
 
@@ -520,7 +536,7 @@ def generate_monthly_report(all_data):
     logger.info("开始生成月度报告...")
     
     timestamp = datetime.now()
-    report_file = f"{REPORT_DIR}/{timestamp.strftime('%Y-%m')}_临床试验数据收集月报.md"
+    report_file = f"{REPORT_DIR}/{timestamp.strftime('%Y-%m-%d')}_临床试验数据收集日报.md"
     
     # 提取关键数据
     registry = all_data.get('registry', {})
@@ -537,7 +553,7 @@ def generate_monthly_report(all_data):
     
     report = f"""# 🏥 临床试验数据收集月报
 
-**报告期间**: {timestamp.strftime('%Y 年 %m 月')}  
+**报告期间**: {timestamp.strftime('%Y 年 %m 月 %d 日')}  
 **生成时间**: {timestamp.strftime('%Y-%m-%d %H:%M:%S')}  
 **数据来源**: CDE、NMPA、临床试验登记平台、保险公司公开数据
 
@@ -647,7 +663,7 @@ def push_report_to_feishu(report_file, summary, trend_analysis=None, accident_db
         "card": {
             "config": {"wide_screen_mode": True},
             "header": {
-                "title": {"tag": "plain_text", "content": f"🏥 临床试验数据收集月报 ({period})"},
+                "title": {"tag": "plain_text", "content": f"🏥 临床试验数据收集日报 ({today})"},
                 "template": "blue"
             },
             "elements": [
@@ -677,19 +693,46 @@ def push_report_to_feishu(report_file, summary, trend_analysis=None, accident_db
         }
     }
     
-    try:
-        response = requests.post(WEBHOOK_URL_MONTHLY, json=content, headers={"Content-Type": "application/json"})
-        result = response.json()
-        
-        if result.get('code') == 0 or result.get('StatusCode') == 0:
-            logger.info("飞书推送成功")
-            return True
-        else:
-            logger.error(f"飞书推送失败：{result}")
+    # 带重试机制的推送（处理飞书频率限制）
+    max_retries = 5
+    initial_delay = 5
+    
+    for attempt in range(1, max_retries + 1):
+        try:
+            logger.info(f"尝试推送 (第 {attempt}/{max_retries} 次)...")
+            response = requests.post(WEBHOOK_URL_MONTHLY, json=content, headers={"Content-Type": "application/json"}, timeout=10)
+            result = response.json()
+            
+            if result.get('code') == 0 or result.get('StatusCode') == 0:
+                logger.info("飞书推送成功")
+                return True
+            
+            # 检查错误类型
+            error_code = result.get('code')
+            error_msg = result.get('msg', '')
+            
+            # 频率限制错误 (11232) - 需要等待重试
+            if error_code == 11232 or 'frequency limited' in error_msg.lower():
+                wait_time = initial_delay * (2 ** (attempt - 1))  # 指数退避
+                logger.warning(f"触发频率限制，等待 {wait_time} 秒后重试...")
+                time.sleep(wait_time)
+                continue
+            
+            # 其他错误 - 不重试
+            logger.error(f"飞书推送失败（非限流错误）：{result}")
             return False
-    except Exception as e:
-        logger.error(f"飞书推送异常：{e}")
-        return False
+            
+        except requests.exceptions.RequestException as e:
+            logger.warning(f"网络错误 (第 {attempt} 次): {e}")
+            if attempt < max_retries:
+                wait_time = initial_delay * (2 ** (attempt - 1))
+                logger.info(f"等待 {wait_time} 秒后重试...")
+                time.sleep(wait_time)
+            continue
+    
+    # 所有重试都失败
+    logger.error(f"飞书推送失败（已达最大重试次数）")
+    return False
 
 
 # ==================== 主函数 ====================

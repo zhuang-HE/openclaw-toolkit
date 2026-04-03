@@ -17,6 +17,39 @@ Before doing anything else:
 
 Don't ask permission. Just do it.
 
+## Workspace Structure
+
+```
+~/.openclaw/workspace/
+├── AGENTS.md              # 本文件 - 代理行为准则
+├── SOUL.md                # 身份定义
+├── USER.md                # 用户信息
+├── MEMORY.md              # 长期记忆
+├── HEARTBEAT.md           # 周期性任务配置
+├── commands/              # 快捷命令定义
+│   ├── README.md          # 命令系统说明
+│   ├── research.md        # /research 命令
+│   ├── review.md          # /review 命令
+│   ├── docs.md            # /docs 命令
+│   ├── git.md             # /git 命令
+│   ├── memory.md          # /memory 命令
+│   └── connect.md         # /connect 命令
+├── agents/                # 子代理定义
+│   ├── researcher.md      # 研究代理
+│   ├── code-reviewer.md   # 代码审查代理
+│   └── documentation-writer.md  # 文档代理
+├── skills/                # 技能定义
+│   ├── web-research/      # 网络研究技能
+│   ├── code-review/       # 代码审查技能
+│   ├── documentation/     # 文档生成技能
+│   ├── git-workflow/      # Git 工作流技能
+│   ├── memory-consolidation/  # 记忆整理技能
+│   └── mcp-connector/     # 外部连接技能
+└── memory/                # 记忆日志
+    ├── YYYY-MM-DD.md      # 每日日志
+    └── archive/           # 归档目录
+```
+
 ## Memory
 
 You wake up fresh each session. These files are your continuity:

@@ -1,0 +1,20 @@
+INFO:     Started server process [197783]
+2026-04-02 00:04:22,623 - uvicorn.error - INFO - Started server process [197783]
+INFO:     Waiting for application startup.
+2026-04-02 00:04:22,624 - uvicorn.error - INFO - Waiting for application startup.
+2026-04-02 00:04:22,624 - clinical_api - INFO - 临床试验数据库 API 启动，端口：8082
+INFO:     Application startup complete.
+2026-04-02 00:04:22,624 - uvicorn.error - INFO - Application startup complete.
+INFO:     Uvicorn running on http://0.0.0.0:8082 (Press CTRL+C to quit)
+2026-04-02 00:04:22,624 - uvicorn.error - INFO - Uvicorn running on http://0.0.0.0:8082 (Press CTRL+C to quit)
+2026-04-02 00:04:23,132 - clinical_api - INFO - 加载事故数据库：10 条记录
+INFO:     127.0.0.1:57668 - "GET /api/accidents?page=1&page_size=3 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52398 - "GET /health HTTP/1.1" 200 OK
+INFO:     Shutting down
+2026-04-02 00:34:20,133 - uvicorn.error - INFO - Shutting down
+INFO:     Waiting for application shutdown.
+2026-04-02 00:34:20,234 - uvicorn.error - INFO - Waiting for application shutdown.
+INFO:     Application shutdown complete.
+2026-04-02 00:34:20,234 - uvicorn.error - INFO - Application shutdown complete.
+INFO:     Finished server process [197783]
+2026-04-02 00:34:20,234 - uvicorn.error - INFO - Finished server process [197783]

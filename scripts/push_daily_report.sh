@@ -1,6 +1,7 @@
 #!/bin/bash
-# 机器人数据收集 - 日报生成和推送脚本
+# 机器人数据收集 - 日报生成和推送脚本（带重试机制）
 # 每天 20:00 执行
+# 优化：添加自动重试、限流检测、指数退避
 
 set -e
 
@@ -13,6 +14,10 @@ TODAY=$(date '+%Y-%m-%d')
 # 飞书 Webhook 配置（签名校验已关闭）
 WEBHOOK_URL="https://open.feishu.cn/open-apis/bot/v2/hook/5128a9a6-8f58-407a-9cbe-5f816713d289"
 
+# 重试配置
+MAX_RETRIES=5
+INITIAL_DELAY=5  # 初始等待秒数
+
 echo "=========================================" >> "$LOG_DIR/日报推送.log"
 echo "执行时间：$(date '+%Y-%m-%d %H:%M:%S')" >> "$LOG_DIR/日报推送.log"
 
@@ -22,15 +27,19 @@ REPORT_FILE="$REPORT_DIR/${TODAY}_机器人数据收集日报.md"
 if [ -f "$REPORT_FILE" ]; then
     echo "找到日报文件：$REPORT_FILE" >> "$LOG_DIR/日报推送.log"
     
-    # 生成飞书消息内容
+    # 生成飞书消息内容（带重试逻辑）
     python3 << PYTHON_SCRIPT
 import os
+import sys
+import time
 import requests
 from datetime import datetime
 
 # 配置
 webhook_url = "$WEBHOOK_URL"
 report_file = "$REPORT_FILE"
+max_retries = $MAX_RETRIES
+initial_delay = $INITIAL_DELAY
 
 # 读取报告内容
 with open(report_file, 'r', encoding='utf-8') as f:
@@ -38,10 +47,6 @@ with open(report_file, 'r', encoding='utf-8') as f:
 
 # 提取关键信息
 lines = report_content.split('\n')
-
-# 构建消息内容
-today = datetime.now().strftime('%Y-%m-%d')
-today = datetime.now().strftime('%Y-%m-%d')
 
 # 从报告中提取关键数据
 total_products = "24"
@@ -68,6 +73,7 @@ for line in lines:
             token_remaining = parts[2].strip()
 
 # 构建飞书卡片消息
+today = datetime.now().strftime('%Y-%m-%d')
 content = {
     "msg_type": "interactive",
     "card": {
@@ -96,26 +102,71 @@ content = {
             {
                 "tag": "note",
                 "elements": [
-                    {"tag": "plain_text", "content": "📄 完整报告已保存至：reports/{today}_机器人数据收集日报.md"}
+                    {"tag": "plain_text", "content": f"📄 完整报告已保存至：reports/{today}_机器人数据收集日报.md"}
                 ]
             }
         ]
     }
 }
 
-# 发送消息
+# 发送消息（带重试逻辑）
 headers = {"Content-Type": "application/json"}
 
-response = requests.post(webhook_url, json=content, headers=headers)
-result = response.json()
+def send_with_retry():
+    """带重试和指数退避的发送函数"""
+    last_error = None
+    
+    for attempt in range(1, max_retries + 1):
+        try:
+            print(f"尝试发送 (第 {attempt}/{max_retries} 次)...")
+            
+            response = requests.post(webhook_url, json=content, headers=headers, timeout=10)
+            result = response.json()
+            
+            if result.get('code') == 0:
+                print(f"推送成功：{today}")
+                return True
+            
+            # 检查错误类型
+            error_code = result.get('code')
+            error_msg = result.get('msg', '')
+            
+            # 频率限制错误 (11232) - 需要等待重试
+            if error_code == 11232 or 'frequency limited' in error_msg.lower():
+                wait_time = initial_delay * (2 ** (attempt - 1))  # 指数退避
+                print(f"触发频率限制，等待 {wait_time} 秒后重试...")
+                time.sleep(wait_time)
+                last_error = result
+                continue
+            
+            # 其他错误 - 不重试
+            print(f"推送失败（非限流错误）：{result}")
+            return False
+            
+        except requests.exceptions.RequestException as e:
+            print(f"网络错误 (第 {attempt} 次): {e}")
+            last_error = str(e)
+            
+            if attempt < max_retries:
+                wait_time = initial_delay * (2 ** (attempt - 1))
+                print(f"等待 {wait_time} 秒后重试...")
+                time.sleep(wait_time)
+            continue
+    
+    # 所有重试都失败
+    print(f"推送失败（已达最大重试次数）：{last_error}")
+    return False
 
-if result.get('code') == 0:
-    print(f"推送成功：{today}")
-else:
-    print(f"推送失败：{result}")
+# 执行发送
+success = send_with_retry()
+sys.exit(0 if success else 1)
 PYTHON_SCRIPT
     
-    echo "推送状态：已完成" >> "$LOG_DIR/日报推送.log"
+    if [ $? -eq 0 ]; then
+        echo "推送状态：成功" >> "$LOG_DIR/日报推送.log"
+    else
+        echo "推送状态：失败（已达最大重试次数）" >> "$LOG_DIR/日报推送.log"
+    fi
 else
     echo "未找到今日报告文件：$REPORT_FILE" >> "$LOG_DIR/日报推送.log"
     echo "尝试生成报告..." >> "$LOG_DIR/日报推送.log"

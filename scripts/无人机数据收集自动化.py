@@ -427,7 +427,7 @@ def generate_monthly_report(sales_data, accident_data, new_cases, trend_analysis
     logger.info("开始生成月度报告...")
     
     timestamp = datetime.now()
-    report_file = f"{REPORT_DIR}/{timestamp.strftime('%Y-%m')}_无人机数据收集月报.md"
+    report_file = f"{REPORT_DIR}/{timestamp.strftime('%Y-%m-%d')}_无人机数据收集日报.md"
     
     # 统计数据库信息
     total_models = 0
@@ -452,7 +452,7 @@ def generate_monthly_report(sales_data, accident_data, new_cases, trend_analysis
     
     report = f"""# 🛩️ 无人机数据收集月报
 
-**报告期间**: {timestamp.strftime('%Y 年 %m 月')}  
+**报告期间**: {timestamp.strftime('%Y 年 %m 月 %d 日')}  
 **生成时间**: {timestamp.strftime('%Y-%m-%d %H:%M:%S')}  
 **数据来源**: 电商平台、保险公司公开年报、行业报告、监管报告
 
@@ -542,7 +542,7 @@ def push_report_to_feishu(report_file, stats, trend_analysis, accident_db_count,
         "card": {
             "config": {"wide_screen_mode": True},
             "header": {
-                "title": {"tag": "plain_text", "content": f"🛩️ 无人机数据收集月报 ({period})"},
+                "title": {"tag": "plain_text", "content": f"🛩️ 无人机数据收集日报 ({today})"},
                 "template": "blue"
             },
             "elements": [

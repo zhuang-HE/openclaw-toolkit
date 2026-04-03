@@ -1,0 +1,73 @@
+2026-03-31 08:41:45,632 - robot_api - INFO - ============================================================
+2026-03-31 08:41:45,632 - robot_api - INFO - 机器人数据库 API 服务启动
+2026-03-31 08:41:45,632 - robot_api - INFO - 数据库路径：/home/admin/.openclaw/workspace/机器人数据库_核心版.csv
+2026-03-31 08:41:45,632 - robot_api - INFO - API 端口：8000
+2026-03-31 08:41:45,632 - robot_api - INFO - 文档地址：http://localhost:8000/docs
+2026-03-31 08:41:45,632 - robot_api - INFO - ============================================================
+2026-03-31 08:41:45,638 - robot_api - INFO - 加载数据库：24 条记录
+2026-03-31 08:41:45,640 - robot_api - INFO - 数据库加载成功：24 条记录
+INFO:     Started server process [181406]
+2026-03-31 08:41:45,653 - uvicorn.error - INFO - Started server process [181406]
+INFO:     Waiting for application startup.
+2026-03-31 08:41:45,653 - uvicorn.error - INFO - Waiting for application startup.
+INFO:     Application startup complete.
+2026-03-31 08:41:45,653 - uvicorn.error - INFO - Application startup complete.
+ERROR:    [Errno 98] error while attempting to bind on address ('0.0.0.0', 8000): address already in use
+2026-03-31 08:41:45,654 - uvicorn.error - ERROR - [Errno 98] error while attempting to bind on address ('0.0.0.0', 8000): address already in use
+INFO:     Waiting for application shutdown.
+2026-03-31 08:41:45,654 - uvicorn.error - INFO - Waiting for application shutdown.
+INFO:     Application shutdown complete.
+2026-03-31 08:41:45,654 - uvicorn.error - INFO - Application shutdown complete.
+2026-03-31 08:41:56,423 - robot_api - INFO - ============================================================
+2026-03-31 08:41:56,423 - robot_api - INFO - 机器人数据库 API 服务启动
+2026-03-31 08:41:56,423 - robot_api - INFO - 数据库路径：/home/admin/.openclaw/workspace/机器人数据库_核心版.csv
+2026-03-31 08:41:56,423 - robot_api - INFO - API 端口：8000
+2026-03-31 08:41:56,423 - robot_api - INFO - 文档地址：http://localhost:8000/docs
+2026-03-31 08:41:56,423 - robot_api - INFO - ============================================================
+2026-03-31 08:41:56,428 - robot_api - INFO - 加载数据库：24 条记录
+2026-03-31 08:41:56,430 - robot_api - INFO - 数据库加载成功：24 条记录
+INFO:     Started server process [181586]
+2026-03-31 08:41:56,437 - uvicorn.error - INFO - Started server process [181586]
+INFO:     Waiting for application startup.
+2026-03-31 08:41:56,437 - uvicorn.error - INFO - Waiting for application startup.
+INFO:     Application startup complete.
+2026-03-31 08:41:56,437 - uvicorn.error - INFO - Application startup complete.
+INFO:     Uvicorn running on http://0.0.0.0:8000 (Press CTRL+C to quit)
+2026-03-31 08:41:56,437 - uvicorn.error - INFO - Uvicorn running on http://0.0.0.0:8000 (Press CTRL+C to quit)
+2026-03-31 08:42:03,238 - robot_api - INFO - API 请求 - Key: Demo Key
+WARNING:  Invalid HTTP request received.
+Traceback (most recent call last):
+  File "/home/admin/.local/lib/python3.6/site-packages/uvicorn/protocols/http/h11_impl.py", line 136, in handle_events
+    event = self.conn.next_event()
+  File "/usr/local/lib/python3.6/site-packages/h11/_connection.py", line 443, in next_event
+    exc._reraise_as_remote_protocol_error()
+  File "/usr/local/lib/python3.6/site-packages/h11/_util.py", line 76, in _reraise_as_remote_protocol_error
+    raise self
+  File "/usr/local/lib/python3.6/site-packages/h11/_connection.py", line 425, in next_event
+    event = self._extract_next_receive_event()
+  File "/usr/local/lib/python3.6/site-packages/h11/_connection.py", line 367, in _extract_next_receive_event
+    event = self._reader(self._receive_buffer)
+  File "/usr/local/lib/python3.6/site-packages/h11/_readers.py", line 73, in maybe_read_from_IDLE_client
+    request_line_re, lines[0], "illegal request line: {!r}", lines[0]
+  File "/usr/local/lib/python3.6/site-packages/h11/_util.py", line 88, in validate
+    raise LocalProtocolError(msg)
+h11._util.RemoteProtocolError: illegal request line: bytearray(b'GET /api/search?q=\xe6\x9c\xba\xe5\x99\xa8\xe4\xba\xba HTTP/1.1')
+2026-04-01 23:59:25,412 - uvicorn.error - WARNING - Invalid HTTP request received.
+Traceback (most recent call last):
+  File "/home/admin/.local/lib/python3.6/site-packages/uvicorn/protocols/http/h11_impl.py", line 136, in handle_events
+    event = self.conn.next_event()
+  File "/usr/local/lib/python3.6/site-packages/h11/_connection.py", line 443, in next_event
+    exc._reraise_as_remote_protocol_error()
+  File "/usr/local/lib/python3.6/site-packages/h11/_util.py", line 76, in _reraise_as_remote_protocol_error
+    raise self
+  File "/usr/local/lib/python3.6/site-packages/h11/_connection.py", line 425, in next_event
+    event = self._extract_next_receive_event()
+  File "/usr/local/lib/python3.6/site-packages/h11/_connection.py", line 367, in _extract_next_receive_event
+    event = self._reader(self._receive_buffer)
+  File "/usr/local/lib/python3.6/site-packages/h11/_readers.py", line 73, in maybe_read_from_IDLE_client
+    request_line_re, lines[0], "illegal request line: {!r}", lines[0]
+  File "/usr/local/lib/python3.6/site-packages/h11/_util.py", line 88, in validate
+    raise LocalProtocolError(msg)
+h11._util.RemoteProtocolError: illegal request line: bytearray(b'GET /api/search?q=\xe6\x9c\xba\xe5\x99\xa8\xe4\xba\xba HTTP/1.1')
+2026-04-01 23:59:25,521 - robot_api - INFO - API 请求 - Key: Demo Key
+2026-04-01 23:59:25,859 - robot_api - INFO - 加载数据库：24 条记录
