@@ -152,6 +152,7 @@ commit 3c5d43a - Initial commit: OpenClaw Claude Code Toolkit v1.0
 
 ## 🔗 相关链接
 
+- **ClawHub**: https://clawhub.com/skills/claude-code-toolkit
 - **GitHub 仓库**: https://github.com/YOUR_USERNAME/openclaw-claude-code-toolkit
 - **OpenClaw**: https://github.com/openclaw/openclaw
 - **Claude Code**: https://code.claude.com
