@@ -354,10 +354,14 @@ skills/my-skill/
 
 ## 📬 联系方式
 
-- 项目地址：https://github.com/openclaw/openclaw-toolkit
-- 问题反馈：https://github.com/openclaw/openclaw-toolkit/issues
+- 项目地址：https://github.com/zhuang-HE/openclaw-toolkit
+- 问题反馈：https://github.com/zhuang-HE/openclaw-toolkit/issues
 - OpenClaw 文档：https://docs.openclaw.ai
 - ClawHub: https://clawhub.com/skills/openclaw-toolkit
+
+## 🏷️ Topics
+
+[![Topics](https://img.shields.io/badge/topics-openclaw%20%7C%20ai--assistant%20%7C%20productivity%20%7C%20automation%20%7C%20workflow-blue)](https://github.com/zhuang-HE/openclaw-toolkit)
 
 ---
 

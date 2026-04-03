@@ -209,6 +209,17 @@ cp -r openclaw-toolkit/* ~/.openclaw/workspace/
 - **ClawHub**: https://clawhub.com
 - **文档**: `docs/` 目录
 
+## 🏷️ Topics
+
+- `openclaw` - OpenClaw 生态系统
+- `ai-assistant` - AI 助手工具
+- `productivity` - 生产力工具
+- `automation` - 自动化工作流
+- `workflow` - 工作流管理
+- `cli` - 命令行工具
+- `tools` - 开发工具集
+- `agent-framework` - AI 代理框架
+
 ---
 
 ## 📄 许可证
