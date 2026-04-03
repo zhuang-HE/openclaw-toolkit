@@ -14,11 +14,11 @@
 
 ### 核心特性
 
-- 🎯 **Commands 系统** - 6 个开箱即用的快捷命令
-- 🤖 **Agents 模板** - 3 个专业代理定义
-- 🛠️ **Skills 库** - 6 个核心技能模块
-- 📚 **完整文档** - 详细的使用指南和示例
-- 🔌 **MCP 风格连接** - 外部服务集成能力
+🎯 开箱即用 - 15 个预定义组件，无需从零开始
+🧩 模块化设计 - Commands/Agents/Skills 三层解耦架构
+📚 最佳实践 - 融合业界领先的 AI 助手设计模式
+🔧 高度可扩展 - 轻松添加自定义命令、代理和技能
+🌐 本地优先 - 支持完全本地部署，数据可控
 
 ### 架构设计
 
@@ -28,11 +28,11 @@
 Commands（命令层）→ Agents（代理层）→ Skills（技能层）
 ```
 
-| 层级 | 说明 | 位置 |
-|------|------|------|
-| Commands | 用户快捷命令 | `commands/` |
-| Agents | 专业任务执行者 | `agents/` |
-| Skills | 可复用能力模块 | `skills/` |
+用户交互层 (Commands)
+    ↓
+任务执行层 (Agents)
+    ↓
+能力模块层 (Skills)
 
 ---
 
@@ -43,6 +43,12 @@ Commands（命令层）→ Agents（代理层）→ Skills（技能层）
 - OpenClaw 已安装并配置
 - 基础 Node.js 环境
 - Git（用于版本控制）
+
+层级            组件数            职责
+Commands        6 个             用户快捷入口 (/research, /review, /docs 等)
+Agents          3 个             专业任务执行者 (researcher, code-reviewer, documentation-writer)
+Skills          6 个             可复用能力模块 (web-research, code-review, documentation 等)
+
 
 ### 安装
 
