@@ -3,7 +3,7 @@
 name: mcp-connector
 
 ## Task
-连接外部服务和 API，实现类似 Claude Code MCP 协议的集成能力。
+连接外部服务和 API，实现类似 MCP 协议的集成能力。
 
 ## Overview
 

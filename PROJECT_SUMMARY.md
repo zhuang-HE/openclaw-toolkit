@@ -94,10 +94,10 @@ openclaw-openclaw-toolkit/
 
 | AI 助手 | This Toolkit | 完成度 |
 |-------------|-------------|--------|
-| `.claude/commands/` | `commands/` | ✅ 100% |
-| `.claude/agents/` | `agents/` | ✅ 100% |
-| `.claude/skills/` | `skills/` | ✅ 100% |
-| `CLAUDE.md` | `AGENTS.md` + `SOUL.md` | ✅ 100% |
+| `OpenClaw commands/` | `commands/` | ✅ 100% |
+| `OpenClaw agents/` | `agents/` | ✅ 100% |
+| `OpenClaw skills/` | `skills/` | ✅ 100% |
+| `OpenClaw 配置文件` | `AGENTS.md` + `SOUL.md` | ✅ 100% |
 | `MCP Protocol` | `mcp-connector` | ✅ 80% |
 | `AutoDream` | `memory-consolidation` | ✅ 100% |
 | `Hooks System` | 待开发 | ⏳ 0% |
@@ -155,7 +155,7 @@ commit 3c5d43a - Initial commit: OpenClaw OpenClaw Toolkit v1.0
 - **ClawHub**: https://clawhub.com/skills/openclaw-toolkit
 - **GitHub 仓库**: https://github.com/YOUR_USERNAME/openclaw-openclaw-toolkit
 - **OpenClaw**: https://github.com/openclaw/openclaw
-- **AI 助手**: https://code.claude.com
+- **AI 助手**: https://docs.openclaw.ai
 - **AI 助手最佳实践参考文档**: https://github.com/shanraisshan/AI 助手最佳实践参考文档
 
 ---

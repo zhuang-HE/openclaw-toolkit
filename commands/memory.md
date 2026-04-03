@@ -67,7 +67,7 @@ trigger: /memory [action] [options]
 
 #### 项目进展
 - OpenClaw 技能迁移项目：已完成核心 Skills 创建
-- Claude Code 研究：完成架构分析
+- AI 助手研究：完成架构分析
 
 #### 重要决策
 - 采用 Skills + Agents 双层架构

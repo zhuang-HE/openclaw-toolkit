@@ -64,7 +64,7 @@ trigger: /research [topic] [--depth=1|2|3] [--sources=N]
 1. **OpenClaw** - 开源本地框架，支持多渠道集成
    来源：GitHub, 官方文档 - 置信度：高
 
-2. **Claude Code** - Anthropic 官方 CLI 工具
+2. **业界主流 AI 助手 CLI** - 参考设计
    来源：Anthropic 文档，npm - 置信度：高
 
 3. **LangChain** - 成熟的 Agent 开发框架

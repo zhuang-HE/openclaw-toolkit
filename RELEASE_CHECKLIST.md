@@ -153,7 +153,7 @@ https://clawhub.com/skills/openclaw-toolkit
 ### 2. 添加到项目 README
 
 ```markdown
-[![ClawHub](https://img.shields.io/badge/ClawHub-claude--code--toolkit-green)](https://clawhub.com/skills/openclaw-toolkit)
+[![ClawHub](https://img.shields.io/badge/ClawHub-openclaw--toolkit-green)](https://clawhub.com/skills/openclaw-toolkit)
 ```
 
 ### 3. 社区推广

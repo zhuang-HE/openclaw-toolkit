@@ -2,7 +2,7 @@
 
 ## Overview
 
-本目录包含 OpenClaw 的快捷命令定义，类似 Claude Code 的 `/command` 系统。
+本目录包含 OpenClaw 的快捷命令定义，类似 `/command` 系统。
 
 每个命令文件定义了一个可快速触发的任务模板。
 

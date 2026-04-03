@@ -50,7 +50,7 @@ clawhub whoami
   "description": "将 AI 助手 的最佳实践迁移到 OpenClaw 框架",
   "author": "OpenClaw Community",
   "license": "MIT",
-  "keywords": ["claude-code", "openclaw", "commands", "agents", "skills"],
+  "keywords": [ "openclaw", "commands", "agents", "skills"],
   ...
 }
 ```
@@ -242,7 +242,7 @@ my-skill/
 在 README 中添加：
 
 ```markdown
-[![ClawHub](https://img.shields.io/badge/ClawHub-claude--code--toolkit-green)](https://clawhub.com/skills/openclaw-toolkit)
+[![ClawHub](https://img.shields.io/badge/ClawHub-openclaw--toolkit-green)](https://clawhub.com/skills/openclaw-toolkit)
 ```
 
 ### 3. 收集反馈
