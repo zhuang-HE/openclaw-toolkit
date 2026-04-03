@@ -44,10 +44,10 @@ clawhub whoami
 
 ```json
 {
-  "name": "claude-code-toolkit",
-  "displayName": "Claude Code Toolkit",
+  "name": "openclaw-toolkit",
+  "displayName": "OpenClaw Toolkit",
   "version": "1.0.0",
-  "description": "将 Claude Code 的最佳实践迁移到 OpenClaw 框架",
+  "description": "将 AI 助手 的最佳实践迁移到 OpenClaw 框架",
   "author": "OpenClaw Community",
   "license": "MIT",
   "keywords": ["claude-code", "openclaw", "commands", "agents", "skills"],
@@ -59,7 +59,7 @@ clawhub whoami
 
 ```bash
 # 检查文件完整性
-cd /home/admin/.openclaw/workspace/openclaw-claude-code-toolkit
+cd /home/admin/.openclaw/workspace/openclaw-openclaw-toolkit
 ls -la
 ```
 
@@ -75,7 +75,7 @@ ls -la
 ### 步骤 3: 发布到 ClawHub
 
 ```bash
-cd /home/admin/.openclaw/workspace/openclaw-claude-code-toolkit
+cd /home/admin/.openclaw/workspace/openclaw-openclaw-toolkit
 
 # 发布技能包
 clawhub publish .
@@ -88,7 +88,7 @@ clawhub publish .
 https://clawhub.com
 ```
 
-搜索：`claude-code-toolkit`
+搜索：`openclaw-toolkit`
 
 ---
 
@@ -122,10 +122,10 @@ clawhub publish .
 
 ```bash
 # 卸载（如已安装）
-clawhub uninstall claude-code-toolkit
+clawhub uninstall openclaw-toolkit
 
 # 重新安装
-clawhub install claude-code-toolkit
+clawhub install openclaw-toolkit
 
 # 验证
 clawhub list
@@ -242,7 +242,7 @@ my-skill/
 在 README 中添加：
 
 ```markdown
-[![ClawHub](https://img.shields.io/badge/ClawHub-claude--code--toolkit-green)](https://clawhub.com/skills/claude-code-toolkit)
+[![ClawHub](https://img.shields.io/badge/ClawHub-claude--code--toolkit-green)](https://clawhub.com/skills/openclaw-toolkit)
 ```
 
 ### 3. 收集反馈
@@ -259,7 +259,7 @@ my-skill/
 
 ```bash
 # 查看安装量（需要管理员权限）
-clawhub inspect claude-code-toolkit
+clawhub inspect openclaw-toolkit
 
 # 查看评分和评论
 # 访问 ClawHub 网站
@@ -271,10 +271,10 @@ clawhub inspect claude-code-toolkit
 
 ```bash
 # 软删除（隐藏）
-clawhub hide claude-code-toolkit
+clawhub hide openclaw-toolkit
 
 # 永久删除（需要管理员权限）
-clawhub delete claude-code-toolkit
+clawhub delete openclaw-toolkit
 ```
 
 ---
@@ -292,7 +292,7 @@ clawhub delete claude-code-toolkit
 **准备发布？执行：**
 
 ```bash
-cd /home/admin/.openclaw/workspace/openclaw-claude-code-toolkit
+cd /home/admin/.openclaw/workspace/openclaw-openclaw-toolkit
 clawhub login      # 如未登录
 clawhub publish .  # 发布
 ```

@@ -1,6 +1,6 @@
 # 使用手册
 
-本手册详细介绍 Claude Code Toolkit 各组件的使用方法。
+本手册详细介绍 AI 助手 Toolkit 各组件的使用方法。
 
 ---
 

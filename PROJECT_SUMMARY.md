@@ -1,21 +1,21 @@
-# 项目总结 - OpenClaw Claude Code Toolkit
+# 项目总结 - OpenClaw OpenClaw Toolkit
 
 ---
 
 ## 📦 项目信息
 
-- **项目名称**: openclaw-claude-code-toolkit
+- **项目名称**: openclaw-openclaw-toolkit
 - **版本**: v1.0.0
 - **许可证**: MIT
 - **创建日期**: 2026-04-03
-- **灵感来源**: Claude Code + claude-code-best-practice (106 篇文档)
+- **灵感来源**: AI 助手 + AI 助手最佳实践参考文档 (106 篇文档)
 
 ---
 
 ## 📂 项目结构
 
 ```
-openclaw-claude-code-toolkit/
+openclaw-openclaw-toolkit/
 ├── README.md                      # 项目说明
 ├── LICENSE                        # MIT 许可证
 ├── .gitignore                     # Git 忽略文件
@@ -90,9 +90,9 @@ openclaw-claude-code-toolkit/
 
 ---
 
-## 📊 与 Claude Code 的映射
+## 📊 与 AI 助手 的映射
 
-| Claude Code | This Toolkit | 完成度 |
+| AI 助手 | This Toolkit | 完成度 |
 |-------------|-------------|--------|
 | `.claude/commands/` | `commands/` | ✅ 100% |
 | `.claude/agents/` | `agents/` | ✅ 100% |
@@ -145,18 +145,18 @@ cp -r commands/ agents/ skills/ docs/ examples/ ~/.openclaw/workspace/
 
 ```
 commit ee5db12 - docs: add GitHub push instructions
-commit 3c5d43a - Initial commit: OpenClaw Claude Code Toolkit v1.0
+commit 3c5d43a - Initial commit: OpenClaw OpenClaw Toolkit v1.0
 ```
 
 ---
 
 ## 🔗 相关链接
 
-- **ClawHub**: https://clawhub.com/skills/claude-code-toolkit
-- **GitHub 仓库**: https://github.com/YOUR_USERNAME/openclaw-claude-code-toolkit
+- **ClawHub**: https://clawhub.com/skills/openclaw-toolkit
+- **GitHub 仓库**: https://github.com/YOUR_USERNAME/openclaw-openclaw-toolkit
 - **OpenClaw**: https://github.com/openclaw/openclaw
-- **Claude Code**: https://code.claude.com
-- **claude-code-best-practice**: https://github.com/shanraisshan/claude-code-best-practice
+- **AI 助手**: https://code.claude.com
+- **AI 助手最佳实践参考文档**: https://github.com/shanraisshan/AI 助手最佳实践参考文档
 
 ---
 
@@ -184,8 +184,8 @@ commit 3c5d43a - Initial commit: OpenClaw Claude Code Toolkit v1.0
 
 ## 🙏 致谢
 
-- **Anthropic** - 创建 Claude Code
-- **shanraisshan** - claude-code-best-practice 仓库 (106 篇文档)
+- **Anthropic** - 创建 AI 助手
+- **shanraisshan** - AI 助手最佳实践参考文档 仓库 (106 篇文档)
 - **OpenClaw 社区** - 提供本地 AI 助手框架
 
 ---

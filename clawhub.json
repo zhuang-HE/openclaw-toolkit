@@ -1,24 +1,24 @@
 {
-  "name": "claude-code-toolkit",
-  "displayName": "Claude Code Toolkit",
+  "name": "openclaw-toolkit",
+  "displayName": "OpenClaw Toolkit",
   "version": "1.0.0",
-  "description": "将 Claude Code 的最佳实践迁移到 OpenClaw 框架 - 包含 Commands/Agents/Skills 完整工具集",
+  "description": "AI 助手最佳实践集成到 OpenClaw 框架 - 包含 Commands/Agents/Skills 完整工具集",
   "author": "OpenClaw Community",
   "license": "MIT",
-  "homepage": "https://github.com/openclaw/openclaw-claude-code-toolkit",
+  "homepage": "https://github.com/openclaw/openclaw-toolkit",
   "repository": {
     "type": "git",
-    "url": "https://github.com/openclaw/openclaw-claude-code-toolkit.git"
+    "url": "https://github.com/openclaw/openclaw-toolkit.git"
   },
   "keywords": [
-    "claude-code",
     "openclaw",
     "commands",
     "agents",
     "skills",
     "productivity",
     "workflow",
-    "ai-assistant"
+    "ai-assistant",
+    "automation"
   ],
   "categories": [
     "productivity",
@@ -37,7 +37,7 @@
   ],
   "scripts": {
     "install": "cp -r commands agents skills docs examples ~/.openclaw/workspace/",
-    "postinstall": "echo '✅ Claude Code Toolkit 安装完成！参考 docs/installation.md 获取使用指南。'"
+    "postinstall": "echo '✅ OpenClaw Toolkit 安装完成！参考 docs/installation.md 获取使用指南。'"
   },
   "engines": {
     "openclaw": ">=1.0.0"

@@ -1,4 +1,4 @@
-# 🎉 Claude Code Toolkit - 发布准备完成
+# 🎉 OpenClaw Toolkit - 发布准备完成
 
 ---
 
@@ -12,11 +12,11 @@
 
 | 项目 | 详情 |
 |------|------|
-| **名称** | claude-code-toolkit |
+| **名称** | openclaw-toolkit |
 | **版本** | 1.0.0 |
 | **许可证** | MIT |
 | **作者** | OpenClaw Community |
-| **位置** | `/home/admin/.openclaw/workspace/openclaw-claude-code-toolkit/` |
+| **位置** | `/home/admin/.openclaw/workspace/openclaw-toolkit/` |
 
 ---
 
@@ -33,9 +33,9 @@
 
 ### 文件统计
 
-- **总文件数**: 26 个
+- **总文件数**: 28 个
 - **代码行数**: ~4,500+
-- **Git 提交**: 7 个
+- **Git 提交**: 8 个
 
 ---
 
@@ -44,7 +44,7 @@
 ### 快速发布
 
 ```bash
-cd /home/admin/.openclaw/workspace/openclaw-claude-code-toolkit
+cd /home/admin/.openclaw/workspace/openclaw-toolkit
 
 # 方式 1: 使用发布脚本
 ./release.sh
@@ -76,7 +76,7 @@ clawhub publish .
 
 4. **验证发布**
    - 访问：https://clawhub.com
-   - 搜索：`claude-code-toolkit`
+   - 搜索：`openclaw-toolkit`
 
 ---
 
@@ -86,7 +86,7 @@ clawhub publish .
 
 ```bash
 # 安装
-clawhub install claude-code-toolkit
+clawhub install openclaw-toolkit
 
 # 验证
 clawhub list
@@ -158,15 +158,8 @@ ls ~/.openclaw/workspace/commands/
 
 ## 📊 Git 历史
 
-```
-65461b5 docs: update links with ClawHub
-a3de408 feat: add release script
-30f5887 docs: add release checklist
-f849297 chore: add .clawhubignore
-dc7eb14 feat: add clawhub.json and publish guide
-2bbe4ff docs: add project summary
-ee5db12 docs: add GitHub push instructions
-3c5d43a Initial commit: OpenClaw Claude Code Toolkit v1.0
+```bash
+git log --oneline
 ```
 
 ---
@@ -177,7 +170,7 @@ ee5db12 docs: add GitHub push instructions
 
 ```bash
 # 1. 切换到项目目录
-cd /home/admin/.openclaw/workspace/openclaw-claude-code-toolkit
+cd /home/admin/.openclaw/workspace/openclaw-toolkit
 
 # 2. 登录 ClawHub
 clawhub login
@@ -200,22 +193,21 @@ clawhub publish .
 ### Badge
 
 ```markdown
-[![ClawHub](https://img.shields.io/badge/ClawHub-claude--code--toolkit-green)](https://clawhub.com/skills/claude-code-toolkit)
+[![ClawHub](https://img.shields.io/badge/ClawHub-openclaw--toolkit-green)](https://clawhub.com/skills/openclaw-toolkit)
 ```
 
 ### 分享链接
 
 ```
-https://clawhub.com/skills/claude-code-toolkit
+https://clawhub.com/skills/openclaw-toolkit
 ```
 
 ---
 
 ## 🙏 致谢
 
-- **Anthropic** - Claude Code 灵感来源
-- **shanraisshan** - claude-code-best-practice (106 篇文档)
 - **OpenClaw 团队** - 本地 AI 助手框架
+- **AI 助手最佳实践社区** - 灵感和参考
 - **ClawHub** - 技能市场平台
 
 ---
@@ -229,7 +221,7 @@ MIT License - 详见 [LICENSE](LICENSE)
 **准备就绪！开始发布吧！** 🚀
 
 ```bash
-cd /home/admin/.openclaw/workspace/openclaw-claude-code-toolkit
+cd /home/admin/.openclaw/workspace/openclaw-toolkit
 clawhub login
 clawhub publish .
 ```

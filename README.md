@@ -1,17 +1,16 @@
-# OpenClaw Claude Code Toolkit
+# OpenClaw Toolkit
 
-🚀 将 Claude Code 的最佳实践迁移到 OpenClaw 框架的工具包
+🚀 AI 助手最佳实践集成到 OpenClaw 框架的工具包
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![OpenClaw](https://img.shields.io/badge/OpenClaw-Compatible-blue)](https://github.com/openclaw/openclaw)
-[![ClawHub](https://img.shields.io/badge/ClawHub-Available-green)](https://clawhub.com)
-[![Claude Code](https://img.shields.io/badge/Claude%20Code-Inspired-orange)](https://code.claude.com)
+[![ClawHub](https://img.shields.io/badge/ClawHub-openclaw--toolkit-green)](https://clawhub.com/skills/openclaw-toolkit)
 
 ---
 
 ## 📖 项目简介
 
-本项目将 [Claude Code](https://code.claude.com) 的核心架构模式和最佳实践迁移到 [OpenClaw](https://github.com/openclaw/openclaw) 框架，让你可以在 OpenClaw 中享受类似 Claude Code 的开发体验。
+本项目将业界领先的 AI 助手最佳实践集成到 [OpenClaw](https://github.com/openclaw/openclaw) 框架，让你可以享受高效、结构化的开发体验。
 
 ### 核心特性
 
@@ -21,16 +20,19 @@
 - 📚 **完整文档** - 详细的使用指南和示例
 - 🔌 **MCP 风格连接** - 外部服务集成能力
 
-### 架构对比
+### 架构设计
 
-| Claude Code | OpenClaw Toolkit | 状态 |
-|-------------|-----------------|------|
-| `.claude/commands/` | `commands/` | ✅ |
-| `.claude/agents/` | `agents/` | ✅ |
-| `.claude/skills/` | `skills/` | ✅ |
-| `CLAUDE.md` | `AGENTS.md` + `SOUL.md` | ✅ |
-| MCP Protocol | `mcp-connector` | ✅ |
-| AutoDream | `memory-consolidation` | ✅ |
+采用业界标准的三层架构：
+
+```
+Commands（命令层）→ Agents（代理层）→ Skills（技能层）
+```
+
+| 层级 | 说明 | 位置 |
+|------|------|------|
+| Commands | 用户快捷命令 | `commands/` |
+| Agents | 专业任务执行者 | `agents/` |
+| Skills | 可复用能力模块 | `skills/` |
 
 ---
 
@@ -48,7 +50,7 @@
 
 ```bash
 # 使用 ClawHub 安装
-clawhub install claude-code-toolkit
+clawhub install openclaw-toolkit
 
 # 验证安装
 ls ~/.openclaw/workspace/commands/
@@ -60,10 +62,10 @@ ls ~/.openclaw/workspace/skills/
 
 ```bash
 # 1. 克隆或下载本仓库
-git clone https://github.com/YOUR_USERNAME/openclaw-claude-code-toolkit.git
+git clone https://github.com/openclaw/openclaw-toolkit.git
 
 # 2. 复制到 OpenClaw workspace
-cp -r openclaw-claude-code-toolkit/* ~/.openclaw/workspace/
+cp -r openclaw-toolkit/* ~/.openclaw/workspace/
 
 # 3. 验证安装
 ls ~/.openclaw/workspace/commands/
@@ -98,7 +100,7 @@ ls ~/.openclaw/workspace/commands/
 ## 📦 项目结构
 
 ```
-openclaw-claude-code-toolkit/
+openclaw-toolkit/
 ├── commands/                  # 快捷命令定义
 │   ├── README.md              # 命令系统说明
 │   ├── research.md            # /research 命令
@@ -120,11 +122,9 @@ openclaw-claude-code-toolkit/
 │   └── mcp-connector/         # 外部连接技能
 ├── docs/                      # 文档
 │   ├── installation.md        # 安装指南
-│   ├── usage.md               # 使用手册
-│   └── customization.md       # 自定义指南
+│   └── usage.md               # 使用手册
 ├── examples/                  # 示例
-│   ├── workflow-examples.md   # 工作流示例
-│   └── integration-examples.md # 集成示例
+│   └── workflow-examples.md   # 工作流示例
 ├── LICENSE                    # 许可证
 └── README.md                  # 本文件
 ```
@@ -317,7 +317,7 @@ skills/my-skill/
 
 - [安装指南](docs/installation.md) - 详细安装步骤
 - [使用手册](docs/usage.md) - 完整使用说明
-- [自定义指南](docs/customization.md) - 扩展和定制
+- [工作流示例](examples/workflow-examples.md) - 实际使用场景
 
 ---
 
@@ -341,17 +341,17 @@ skills/my-skill/
 
 ## 🙏 致谢
 
-- [Claude Code](https://code.claude.com) - Anthropic 的命令行 AI 助手，本项目的灵感来源
-- [claude-code-best-practice](https://github.com/shanraisshan/claude-code-best-practice) - Claude Code 最佳实践整理
 - [OpenClaw](https://github.com/openclaw/openclaw) - 本地 AI 助手框架
+- AI 助手最佳实践社区 - 灵感和参考
 
 ---
 
 ## 📬 联系方式
 
-- 项目地址：https://github.com/YOUR_USERNAME/openclaw-claude-code-toolkit
-- 问题反馈：https://github.com/YOUR_USERNAME/openclaw-claude-code-toolkit/issues
+- 项目地址：https://github.com/openclaw/openclaw-toolkit
+- 问题反馈：https://github.com/openclaw/openclaw-toolkit/issues
 - OpenClaw 文档：https://docs.openclaw.ai
+- ClawHub: https://clawhub.com/skills/openclaw-toolkit
 
 ---
 

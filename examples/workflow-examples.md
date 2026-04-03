@@ -1,6 +1,6 @@
 # 工作流示例
 
-本文件展示 Claude Code Toolkit 的实际使用场景。
+本文件展示 AI 助手 Toolkit 的实际使用场景。
 
 ---
 
@@ -95,7 +95,7 @@ sessions_spawn({
 /research AI Agent 框架 --depth=2
 
 # 2. 深度对比
-/research Claude Code vs OpenClaw vs LangChain --depth=3 --sources=5
+/research AI 助手 vs OpenClaw vs LangChain --depth=3 --sources=5
 
 # 3. 整理调研结果
 /memory consolidate

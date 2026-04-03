@@ -1,6 +1,6 @@
 # 安装指南
 
-本指南将帮助你在 OpenClaw 中安装和配置 Claude Code Toolkit。
+本指南将帮助你在 OpenClaw 中安装和配置 AI 助手 Toolkit。
 
 ---
 
@@ -36,8 +36,8 @@ git --version
 
 ```bash
 # 1. 下载或克隆本仓库
-git clone https://github.com/YOUR_USERNAME/openclaw-claude-code-toolkit.git
-cd openclaw-claude-code-toolkit
+git clone https://github.com/YOUR_USERNAME/openclaw-openclaw-toolkit.git
+cd openclaw-openclaw-toolkit
 
 # 2. 复制到 OpenClaw workspace
 cp -r commands/ ~/.openclaw/workspace/
@@ -56,12 +56,12 @@ ls ~/.openclaw/workspace/skills/
 ```bash
 # 1. 克隆到 workspace
 cd ~/.openclaw/workspace/
-git clone https://github.com/YOUR_USERNAME/openclaw-claude-code-toolkit.git
+git clone https://github.com/YOUR_USERNAME/openclaw-openclaw-toolkit.git
 
 # 2. 创建符号链接
-ln -s openclaw-claude-code-toolkit/commands commands
-ln -s openclaw-claude-code-toolkit/agents agents
-ln -s openclaw-claude-code-toolkit/skills skills
+ln -s openclaw-openclaw-toolkit/commands commands
+ln -s openclaw-openclaw-toolkit/agents agents
+ln -s openclaw-openclaw-toolkit/skills skills
 ```
 
 ---
@@ -182,7 +182,7 @@ sessions_spawn({
 
 ```bash
 # 拉取最新代码
-cd ~/.openclaw/workspace/openclaw-claude-code-toolkit
+cd ~/.openclaw/workspace/openclaw-openclaw-toolkit
 git pull origin main
 
 # 重启 OpenClaw Gateway

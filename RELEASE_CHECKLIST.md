@@ -5,7 +5,7 @@
 ### ✅ 文件完整性检查
 
 ```bash
-cd /home/admin/.openclaw/workspace/openclaw-claude-code-toolkit
+cd /home/admin/.openclaw/workspace/openclaw-openclaw-toolkit
 
 # 检查必需文件
 ls -la clawhub.json        # ✅ ClawHub 配置
@@ -22,8 +22,8 @@ ls -la examples/           # ✅ 示例
 
 ```json
 {
-  "name": "claude-code-toolkit",         ✅
-  "displayName": "Claude Code Toolkit",  ✅
+  "name": "openclaw-toolkit",         ✅
+  "displayName": "OpenClaw Toolkit",  ✅
   "version": "1.0.0",                    ✅
   "description": "...",                  ✅
   "author": "OpenClaw Community",        ✅
@@ -39,7 +39,7 @@ ls -la examples/           # ✅ 示例
 ### 步骤 1: 登录 ClawHub
 
 ```bash
-cd /home/admin/.openclaw/workspace/openclaw-claude-code-toolkit
+cd /home/admin/.openclaw/workspace/openclaw-openclaw-toolkit
 
 # 登录（会打开浏览器）
 clawhub login
@@ -74,7 +74,7 @@ clawhub whoami
 # 检查将要发布的文件
 clawhub publish . --dry-run
 # 或
-clawhub inspect claude-code-toolkit
+clawhub inspect openclaw-toolkit
 ```
 
 ### 步骤 4: 正式发布
@@ -86,14 +86,14 @@ clawhub publish .
 
 **发布成功后会显示**：
 ```
-✅ Published claude-code-toolkit@1.0.0
-🔗 https://clawhub.com/skills/claude-code-toolkit
+✅ Published openclaw-toolkit@1.0.0
+🔗 https://clawhub.com/skills/openclaw-toolkit
 ```
 
 ### 步骤 5: 验证发布
 
 1. 访问 ClawHub: https://clawhub.com
-2. 搜索：`claude-code-toolkit`
+2. 搜索：`openclaw-toolkit`
 3. 查看技能包详情页
 
 ---
@@ -104,10 +104,10 @@ clawhub publish .
 
 ```bash
 # 卸载（如已安装）
-clawhub uninstall claude-code-toolkit
+clawhub uninstall openclaw-toolkit
 
 # 重新安装
-clawhub install claude-code-toolkit
+clawhub install openclaw-toolkit
 
 # 验证安装
 clawhub list
@@ -147,13 +147,13 @@ ls ~/.openclaw/workspace/skills/
 ### 1. 分享链接
 
 ```
-https://clawhub.com/skills/claude-code-toolkit
+https://clawhub.com/skills/openclaw-toolkit
 ```
 
 ### 2. 添加到项目 README
 
 ```markdown
-[![ClawHub](https://img.shields.io/badge/ClawHub-claude--code--toolkit-green)](https://clawhub.com/skills/claude-code-toolkit)
+[![ClawHub](https://img.shields.io/badge/ClawHub-claude--code--toolkit-green)](https://clawhub.com/skills/openclaw-toolkit)
 ```
 
 ### 3. 社区推广
@@ -205,12 +205,12 @@ clawhub login
 ### 问题 2: 名称冲突
 
 ```
-Error: Skill name 'claude-code-toolkit' already exists
+Error: Skill name 'openclaw-toolkit' already exists
 ```
 
 **解决**：
 - 修改 `clawhub.json` 中的 `name` 字段
-- 或使用自己的命名空间：`yourname/claude-code-toolkit`
+- 或使用自己的命名空间：`yourname/openclaw-toolkit`
 
 ### 问题 3: 文件过大
 
@@ -249,7 +249,7 @@ Validation failed: missing required fields
 
 ```bash
 # 查看技能包信息
-clawhub inspect claude-code-toolkit
+clawhub inspect openclaw-toolkit
 
 # 查看安装量（需要权限）
 # 访问 ClawHub 网站查看统计面板
@@ -261,7 +261,7 @@ clawhub inspect claude-code-toolkit
 
 ```bash
 # 一键发布（如已登录）
-cd /home/admin/.openclaw/workspace/openclaw-claude-code-toolkit
+cd /home/admin/.openclaw/workspace/openclaw-openclaw-toolkit
 clawhub login && clawhub publish .
 ```
 
@@ -280,7 +280,7 @@ clawhub login && clawhub publish .
 **准备就绪？开始发布！**
 
 ```bash
-cd /home/admin/.openclaw/workspace/openclaw-claude-code-toolkit
+cd /home/admin/.openclaw/workspace/openclaw-openclaw-toolkit
 clawhub login
 clawhub publish .
 ```

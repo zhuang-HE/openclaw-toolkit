@@ -26,8 +26,8 @@ brew install gh
 gh auth login
 
 # 创建仓库并推送
-cd /home/admin/.openclaw/workspace/openclaw-claude-code-toolkit
-gh repo create openclaw-claude-code-toolkit --public --source=. --remote=origin --push
+cd /home/admin/.openclaw/workspace/openclaw-openclaw-toolkit
+gh repo create openclaw-openclaw-toolkit --public --source=. --remote=origin --push
 ```
 
 ---
@@ -37,8 +37,8 @@ gh repo create openclaw-claude-code-toolkit --public --source=. --remote=origin 
 ### 步骤 1: 在 GitHub 创建仓库
 
 1. 访问 https://github.com/new
-2. 仓库名：`openclaw-claude-code-toolkit`
-3. 描述：`Claude Code best practices migrated to OpenClaw framework`
+2. 仓库名：`openclaw-openclaw-toolkit`
+3. 描述：`AI 助手 best practices migrated to OpenClaw framework`
 4. 选择 **Public**
 5. **不要** 勾选 "Initialize this repository with a README"
 6. 点击 "Create repository"
@@ -46,13 +46,13 @@ gh repo create openclaw-claude-code-toolkit --public --source=. --remote=origin 
 ### 步骤 2: 添加远程仓库并推送
 
 ```bash
-cd /home/admin/.openclaw/workspace/openclaw-claude-code-toolkit
+cd /home/admin/.openclaw/workspace/openclaw-openclaw-toolkit
 
 # 添加远程仓库（替换 YOUR_USERNAME 为你的 GitHub 用户名）
-git remote add origin https://github.com/YOUR_USERNAME/openclaw-claude-code-toolkit.git
+git remote add origin https://github.com/YOUR_USERNAME/openclaw-openclaw-toolkit.git
 
 # 或者使用 SSH（如配置了 SSH key）
-# git remote add origin git@github.com:YOUR_USERNAME/openclaw-claude-code-toolkit.git
+# git remote add origin git@github.com:YOUR_USERNAME/openclaw-openclaw-toolkit.git
 
 # 推送到 GitHub
 git branch -M main
@@ -96,7 +96,7 @@ git push -u origin main
 推送完成后，访问：
 
 ```
-https://github.com/YOUR_USERNAME/openclaw-claude-code-toolkit
+https://github.com/YOUR_USERNAME/openclaw-openclaw-toolkit
 ```
 
 确认文件已上传：
@@ -114,7 +114,7 @@ https://github.com/YOUR_USERNAME/openclaw-claude-code-toolkit
 
 ```bash
 # 日常提交和推送
-cd /home/admin/.openclaw/workspace/openclaw-claude-code-toolkit
+cd /home/admin/.openclaw/workspace/openclaw-openclaw-toolkit
 git add .
 git commit -m "feat: 添加新功能"
 git push
@@ -147,5 +147,5 @@ git push
 **推送完成后，记得更新 README.md 中的链接！**
 
 ```markdown
-[![GitHub](https://img.shields.io/badge/GitHub-Repository-blue)](https://github.com/YOUR_USERNAME/openclaw-claude-code-toolkit)
+[![GitHub](https://img.shields.io/badge/GitHub-Repository-blue)](https://github.com/YOUR_USERNAME/openclaw-openclaw-toolkit)
 ```
