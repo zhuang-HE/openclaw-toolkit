@@ -1,0 +1,27 @@
+# ClawHub ignore file
+
+.git/
+.gitignore
+node_modules/
+*.log
+logs/
+backup/
+data-platform/
+api/
+drone_data/
+clinical_trial_data/
+robot_data/
+finance_data/
+reports/ (except docs/)
+scripts/ (except examples/)
+*.xlsx
+*.csv
+*.tmp
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+.env
+.env.local
+*.pem
+*.key
