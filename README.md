@@ -4,6 +4,7 @@
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![OpenClaw](https://img.shields.io/badge/OpenClaw-Compatible-blue)](https://github.com/openclaw/openclaw)
+[![ClawHub](https://img.shields.io/badge/ClawHub-Available-green)](https://clawhub.com)
 [![Claude Code](https://img.shields.io/badge/Claude%20Code-Inspired-orange)](https://code.claude.com)
 
 ---
@@ -43,6 +44,20 @@
 
 ### 安装
 
+#### 方式一：通过 ClawHub（推荐）
+
+```bash
+# 使用 ClawHub 安装
+clawhub install claude-code-toolkit
+
+# 验证安装
+ls ~/.openclaw/workspace/commands/
+ls ~/.openclaw/workspace/agents/
+ls ~/.openclaw/workspace/skills/
+```
+
+#### 方式二：手动安装
+
 ```bash
 # 1. 克隆或下载本仓库
 git clone https://github.com/YOUR_USERNAME/openclaw-claude-code-toolkit.git
@@ -52,8 +67,6 @@ cp -r openclaw-claude-code-toolkit/* ~/.openclaw/workspace/
 
 # 3. 验证安装
 ls ~/.openclaw/workspace/commands/
-ls ~/.openclaw/workspace/agents/
-ls ~/.openclaw/workspace/skills/
 ```
 
 ### 使用命令

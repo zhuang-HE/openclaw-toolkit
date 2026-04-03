@@ -1,0 +1,72 @@
+{
+  "name": "claude-code-toolkit",
+  "displayName": "Claude Code Toolkit",
+  "version": "1.0.0",
+  "description": "将 Claude Code 的最佳实践迁移到 OpenClaw 框架 - 包含 Commands/Agents/Skills 完整工具集",
+  "author": "OpenClaw Community",
+  "license": "MIT",
+  "homepage": "https://github.com/openclaw/openclaw-claude-code-toolkit",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/openclaw/openclaw-claude-code-toolkit.git"
+  },
+  "keywords": [
+    "claude-code",
+    "openclaw",
+    "commands",
+    "agents",
+    "skills",
+    "productivity",
+    "workflow",
+    "ai-assistant"
+  ],
+  "categories": [
+    "productivity",
+    "development",
+    "workflow"
+  ],
+  "main": "README.md",
+  "files": [
+    "commands/",
+    "agents/",
+    "skills/",
+    "docs/",
+    "examples/",
+    "README.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "install": "cp -r commands agents skills docs examples ~/.openclaw/workspace/",
+    "postinstall": "echo '✅ Claude Code Toolkit 安装完成！参考 docs/installation.md 获取使用指南。'"
+  },
+  "engines": {
+    "openclaw": ">=1.0.0"
+  },
+  "features": {
+    "commands": [
+      "/research - 深度网络研究",
+      "/review - 代码审查",
+      "/docs - 文档生成",
+      "/git - Git 工作流",
+      "/memory - 记忆管理",
+      "/connect - 外部连接"
+    ],
+    "agents": [
+      "researcher - 研究代理",
+      "code-reviewer - 代码审查代理",
+      "documentation-writer - 文档代理"
+    ],
+    "skills": [
+      "web-research - 网络研究",
+      "code-review - 代码审查",
+      "documentation - 文档生成",
+      "git-workflow - Git 工作流",
+      "memory-consolidation - 记忆整理",
+      "mcp-connector - 外部连接"
+    ]
+  },
+  "screenshots": [
+    "docs/installation.md",
+    "docs/usage.md"
+  ]
+}
