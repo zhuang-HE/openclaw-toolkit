@@ -5,19 +5,10 @@ on:
     tags:
       - 'v*.*.*'
 
-  workflow_dispatch:
-    inputs:
-      version:
-        description: '版本号（如 1.1.0）'
-        required: true
-        type: string
-
 jobs:
   release:
     name: Create Release
     runs-on: ubuntu-latest
-    outputs:
-      version: ${{ steps.version.outputs.version }}
     permissions:
       contents: write
 
@@ -25,26 +16,14 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v5
 
-      - name: Determine version
+      - name: Get version from tag
         id: version
         run: |
-          # Tag push: GITHUB_REF = refs/tags/v1.2.3
-          # Workflow dispatch: github.event.inputs.version
-          if [[ "$GITHUB_REF" == refs/tags/* ]]; then
-            VERSION="${GITHUB_REF#refs/tags/}"
-          elif [[ -n "${{ github.event.inputs.version }}" ]]; then
-            VERSION="${{ github.event.inputs.version }}"
-            # 确保有 v 前缀
-            if [[ ! "$VERSION" =~ ^v ]]; then
-              VERSION="v$VERSION"
-            fi
-          else
-            echo "Error: No version provided"
-            exit 1
-          fi
-          echo "version=$VERSION" >> $GITHUB_OUTPUT
-          echo "tag_name=$VERSION" >> $GITHUB_OUTPUT
-          echo "Releasing version: $VERSION"
+          # 从 GITHUB_REF 提取标签名称（格式：refs/tags/v1.2.3）
+          TAG_NAME="${GITHUB_REF#refs/tags/}"
+          echo "tag_name=${TAG_NAME}" >> $GITHUB_OUTPUT
+          echo "version=${TAG_NAME}" >> $GITHUB_OUTPUT
+          echo "Using tag: ${TAG_NAME}"
 
       - name: Generate changelog
         id: changelog
@@ -58,9 +37,9 @@ jobs:
         uses: softprops/action-gh-release@v2
         with:
           tag_name: ${{ steps.version.outputs.tag_name }}
-          name: OpenClaw Toolkit v${{ steps.version.outputs.version }}
+          name: OpenClaw Toolkit v${{ steps.version.outputs.tag_name }}
           body: |
-            ## OpenClaw Toolkit v${{ steps.version.outputs.version }}
+            ## OpenClaw Toolkit v${{ steps.version.outputs.tag_name }}
 
             ### 主要变更
             ${{ steps.changelog.outputs.changelog }}
@@ -71,8 +50,6 @@ jobs:
             ```
           draft: false
           prerelease: false
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
   publish-clawhub:
     name: Publish to ClawHub
@@ -95,8 +72,10 @@ jobs:
       - name: Publish to ClawHub
         env:
           CLAWHUB_TOKEN: ${{ secrets.CLAWHUB_TOKEN }}
-          VERSION: ${{ needs.release.outputs.version }}
         run: |
+          VERSION="${{ needs.release.outputs.tag_name }}"
+          echo "Publishing version: ${VERSION}"
+          
           clawhub login --token "$CLAWHUB_TOKEN"
           clawhub package publish . \
             --source-repo zhuang-HE/openclaw-toolkit \
