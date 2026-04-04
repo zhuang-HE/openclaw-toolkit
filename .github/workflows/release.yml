@@ -23,12 +23,18 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v5
 
-      - name: Get version
+      - name: Determine version
         id: version
         run: |
-          VERSION=${GITHUB_REF#refs/tags/}
-          if [ -z "$VERSION" ]; then VERSION="${{ inputs.version }}"; fi
+          # Tag push: GITHUB_REF = refs/tags/v1.2.3
+          # Workflow dispatch: inputs.version
+          if [[ "$GITHUB_REF" == refs/tags/* ]]; then
+            VERSION="${GITHUB_REF#refs/tags/}"
+          else
+            VERSION="${{ inputs.version }}"
+          fi
           echo "version=$VERSION" >> $GITHUB_OUTPUT
+          echo "tag_name=${VERSION}" >> $GITHUB_OUTPUT
           echo "Releasing version: $VERSION"
 
       - name: Generate changelog
@@ -42,24 +48,18 @@ jobs:
       - name: Create GitHub Release
         uses: softprops/action-gh-release@v2
         with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          tag_name: ${{ steps.version.outputs.version }}
+          tag_name: ${{ steps.version.outputs.tag_name }}
           name: OpenClaw Toolkit v${{ steps.version.outputs.version }}
           body: |
-            ## 📦 OpenClaw Toolkit v${{ steps.version.outputs.version }}
+            ## OpenClaw Toolkit v${{ steps.version.outputs.version }}
 
             ### 主要变更
             ${{ steps.changelog.outputs.changelog }}
 
             ### 安装方式
             ```bash
-            # 通过 ClawHub 安装
             clawhub install zhuang-HE/openclaw-toolkit
             ```
-
-            ### 完整更新日志
-            访问 [Release Notes](https://github.com/zhuang-HE/openclaw-toolkit/releases)
           draft: false
           prerelease: false
         env:
@@ -86,7 +86,7 @@ jobs:
       - name: Publish to ClawHub
         env:
           CLAWHUB_TOKEN: ${{ secrets.CLAWHUB_TOKEN }}
-          VERSION: ${{ needs.release.outputs.version || github.ref_name }}
+          VERSION: ${{ needs.release.outputs.version }}
         run: |
           clawhub login --token "$CLAWHUB_TOKEN"
           clawhub package publish . \
