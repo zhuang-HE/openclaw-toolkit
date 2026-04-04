@@ -1,373 +1,237 @@
 # OpenClaw Toolkit
 
-🚀 AI 助手最佳实践集成到 OpenClaw 框架的工具包
+<div align="center">
+
+🚀 AI 助手最佳实践 · 开箱即用的 OpenClaw 增强工具包
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![OpenClaw](https://img.shields.io/badge/OpenClaw-Compatible-blue)](https://github.com/openclaw/openclaw)
-[![ClawHub](https://img.shields.io/badge/ClawHub-openclaw--toolkit-green)](https://clawhub.com/skills/openclaw-toolkit)
+[![ClawHub](https://img.shields.io/badge/ClawHub-published-green?logo=rocket)](https://clawhub.ai/plugins/openclaw-toolkit)
+[![GitHub stars](https://img.shields.io/github/stars/zhuang-HE/openclaw-toolkit?style=social)](https://github.com/zhuang-HE/openclaw-toolkit/stargazers)
+[![GitHub forks](https://img.shields.io/github/forks/zhuang-HE/openclaw-toolkit?style=social)](https://github.com/zhuang-HE/openclaw-toolkit/network/members)
+[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](CONTRIBUTING.md)
+
+**15 个预定义组件 · Commands / Agents / Skills 三层解耦 · 一键安装**
+
+[快速开始](#-快速开始) · [核心组件](#-核心组件) · [使用演示](#-使用演示) · [安装方式](#-安装) · [贡献指南](CONTRIBUTING.md)
+
+</div>
 
 ---
 
-## 📖 项目简介
+## 🎯 项目简介
 
-本项目将业界领先的 AI 助手最佳实践集成到 [OpenClaw](https://github.com/openclaw/openclaw) 框架，让你可以享受高效、结构化的开发体验。
+OpenClaw Toolkit 将业界领先的 AI 助手最佳实践打包成开箱即用的组件，集成到 OpenClaw 框架。
 
 ### 核心特性
 
-🎯 开箱即用 - 15 个预定义组件，无需从零开始
-🧩 模块化设计 - Commands/Agents/Skills 三层解耦架构
-📚 最佳实践 - 融合业界领先的 AI 助手设计模式
-🔧 高度可扩展 - 轻松添加自定义命令、代理和技能
-🌐 本地优先 - 支持完全本地部署，数据可控
+| 特性 | 说明 |
+|------|------|
+| 🧩 **三层解耦架构** | Commands → Agents → Skills，职责清晰，易于扩展 |
+| 🚀 **15 个预定义组件** | 覆盖研究、审查、文档、工作流、记忆、外部集成 |
+| 🌍 **多源研究** | 聚合搜索引擎 + 微信公众号 + 通用搜索，结果更全面 |
+| 🔍 **安全代码审查** | 自动识别安全漏洞、代码质量问题和优化建议 |
+| 🧠 **记忆系统** | 自动整理和压缩工作记忆，保持长期知识可用 |
+| 🔗 **外部服务集成** | GitHub、Docker、数据库等外部工具无缝连接 |
 
-### 架构设计
+---
 
-采用业界标准的三层架构：
+## 📂 项目结构
 
 ```
-Commands（命令层）→ Agents（代理层）→ Skills（技能层）
+openclaw-toolkit/
+├── commands/               # 6 个快捷命令（用户入口）
+│   ├── research.md        # /research  深度研究
+│   ├── review.md          # /review    代码审查
+│   ├── docs.md            # /docs      文档生成
+│   ├── git.md             # /git       Git 工作流
+│   ├── memory.md          # /memory    记忆管理
+│   └── connect.md         # /connect   外部连接
+│
+├── agents/                 # 3 个专业代理（任务执行）
+│   ├── researcher.md      # 研究代理：多源信息搜集分析
+│   ├── code-reviewer.md   # 审查代理：代码质量 + 安全审计
+│   └── documentation-writer.md  # 文档代理：技术文档编写
+│
+├── skills/                 # 6 个技能模块（可复用能力）
+│   ├── web-research/       # 网络研究
+│   ├── code-review/       # 代码审查
+│   ├── documentation/     # 文档生成
+│   ├── git-workflow/      # Git 工作流
+│   ├── memory-consolidation/  # 记忆整理
+│   └── mcp-connector/    # 外部连接
+│
+└── examples/              # 工作流示例
+    └── workflow-examples.md
 ```
 
-用户交互层 (Commands)
-    ↓
-任务执行层 (Agents)
-    ↓
-能力模块层 (Skills)
+---
+
+## 🖥️ 使用演示
+
+### 安装后，在 OpenClaw 会话中直接调用：
+
+```
+你：帮我深度研究一下无人机保险的市场现状
+─────────────────────────────────────────────────
+[Tool] /research 无人机保险市场 2026
+
+  ✓ 搜索 12 个来源（微信公众号 + 网络搜索）
+  ✓ 整理行业报告 3 份、政策文件 2 份
+  ✓ 生成结构化分析报告
+
+─────────────────────────────────────────────────
+
+你：review 这段代码有没有安全问题
+─────────────────────────────────────────────────
+[Tool] /review src/auth.ts
+
+  🔍 扫描中...
+  ⚠️ 发现 2 个风险点：
+     • SQL 注入风险（第 23 行）
+     • 敏感信息明文存储（第 45 行）
+  ✅ 代码质量评分：78/100
+  💡 优化建议已生成
+
+─────────────────────────────────────────────────
+
+你：帮我生成 API 文档
+─────────────────────────────────────────────────
+[Tool] /docs src/api/ --type=openapi
+
+  ✓ 分析 12 个端点
+  ✓ 生成 OpenAPI 3.0 文档
+  ✓ 保存至 docs/api.md
+```
+
+### 命令速查
+
+```bash
+/research <主题>        # 深度网络研究
+/review <文件或目录>    # 代码审查 + 安全审计
+/docs <路径> --type=<类型>  # 文档生成
+/git <操作>             # Git 工作流自动化
+/memory <操作>          # 记忆整理与压缩
+/connect <服务>          # 外部服务连接
+```
 
 ---
 
 ## 🚀 快速开始
 
-### 前置条件
-
-- OpenClaw 已安装并配置
-- 基础 Node.js 环境
-- Git（用于版本控制）
-
-层级            组件数            职责
-Commands        6 个             用户快捷入口 (/research, /review, /docs 等)
-Agents          3 个             专业任务执行者 (researcher, code-reviewer, documentation-writer)
-Skills          6 个             可复用能力模块 (web-research, code-review, documentation 等)
-
-
-### 安装
-
-#### 方式一：通过 ClawHub（推荐）
+### 方式一：通过 ClawHub 安装（推荐）
 
 ```bash
-# 使用 ClawHub 安装
-clawhub install openclaw-toolkit
+# 一键安装（安装整个工具包）
+clawhub install zhuang-HE/openclaw-toolkit
 
-# 验证安装
-ls ~/.openclaw/workspace/commands/
-ls ~/.openclaw/workspace/agents/
-ls ~/.openclaw/workspace/skills/
+# 或者安装单个 skill
+clawhub install web-research
+clawhub install code-review
 ```
 
-#### 方式二：手动安装
+### 方式二：手动安装
 
 ```bash
-# 1. 克隆或下载本仓库
+# 克隆仓库
 git clone https://github.com/zhuang-HE/openclaw-toolkit.git
+cd openclaw-toolkit
 
-# 2. 复制 skills 到 WorkBuddy 用户级目录（Windows）
-xcopy /E /I openclaw-toolkit\skills\* %USERPROFILE%\.workbuddy\skills\
+# Windows
+xcopy /E /I skills\* %USERPROFILE%\.workbuddy\skills\
 
-# 复制 skills 到 WorkBuddy 用户级目录（macOS/Linux）
-cp -r openclaw-toolkit/skills/* ~/.workbuddy/skills/
+# macOS / Linux
+cp -r skills/* ~/.workbuddy/skills/
 
-# 3. 验证安装
+# 验证
 ls ~/.workbuddy/skills/
 ```
 
-> **提示**: 安装到 `~/.workbuddy/skills/` 后，WorkBuddy 会自动识别 SKILL.md 中的 frontmatter，根据触发词自动加载对应技能。
-
-### 使用命令
-
-在 OpenClaw 会话中直接使用：
-
-```bash
-# 深度研究
-/research AI Agent 框架
-
-# 代码审查
-/review src/auth.ts
-
-# 生成文档
-/docs src/api/
-
-# Git 操作
-/git commit
-
-# 记忆整理
-/memory consolidate
-
-# 外部连接
-/connect status
-```
+> **提示**：安装到 `~/.workbuddy/skills/` 后，WorkBuddy 会根据 SKILL.md 中的 frontmatter 触发词自动加载对应技能，无需手动选择。
 
 ---
 
-## 📦 项目结构
+## 🧩 核心组件
 
-```
-openclaw-toolkit/
-├── commands/                  # 快捷命令定义
-│   ├── README.md              # 命令系统说明
-│   ├── research.md            # /research 命令
-│   ├── review.md              # /review 命令
-│   ├── docs.md                # /docs 命令
-│   ├── git.md                 # /git 命令
-│   ├── memory.md              # /memory 命令
-│   └── connect.md             # /connect 命令
-├── agents/                    # 子代理定义
-│   ├── researcher.md          # 研究代理
-│   ├── code-reviewer.md       # 代码审查代理
-│   └── documentation-writer.md # 文档代理
-├── skills/                    # 技能模块
-│   ├── web-research/          # 网络研究技能
-│   ├── code-review/           # 代码审查技能
-│   ├── documentation/         # 文档生成技能
-│   ├── git-workflow/          # Git 工作流技能
-│   ├── memory-consolidation/  # 记忆整理技能
-│   └── mcp-connector/         # 外部连接技能
-├── docs/                      # 文档
-│   ├── installation.md        # 安装指南
-│   └── usage.md               # 使用手册
-├── examples/                  # 示例
-│   └── workflow-examples.md   # 工作流示例
-├── LICENSE                    # 许可证
-└── README.md                  # 本文件
-```
+### Commands（命令层）
 
----
+| 命令 | 功能 | 底层技能 |
+|------|------|---------|
+| `/research` | 深度网络研究，多源聚合 | `web-research` |
+| `/review` | 代码审查 + 安全审计 | `code-review` |
+| `/docs` | 技术文档生成 | `documentation` |
+| `/git` | Git 工作流自动化 | `git-workflow` |
+| `/memory` | 记忆整理与压缩 | `memory-consolidation` |
+| `/connect` | 外部服务连接 | `mcp-connector` |
 
-## 🛠️ 核心组件
-
-### Commands（命令）
-
-| 命令 | 功能 | 调用技能 |
-|------|------|----------|
-| `/research` | 深度网络研究 | web-research |
-| `/review` | 代码审查 | code-review |
-| `/docs` | 文档生成 | documentation |
-| `/git` | Git 工作流 | git-workflow |
-| `/memory` | 记忆管理 | memory-consolidation |
-| `/connect` | 外部连接 | mcp-connector |
-
-### Agents（代理）
-
-| 代理 | 职责 | 适用场景 |
-|------|------|----------|
-| `researcher` | 信息搜集分析 | 市场调研、竞品分析 |
-| `code-reviewer` | 代码审查 | PR 审查、安全审计 |
-| `documentation-writer` | 文档编写 | API 文档、教程 |
-
-### Skills（技能）
+### Skills（技能层）
 
 | 技能 | 功能 | 复杂度 |
 |------|------|--------|
-| `web-research` | 多源网络研究 | ⭐⭐ |
-| `code-review` | 代码质量审查 | ⭐⭐⭐ |
-| `documentation` | 技术文档生成 | ⭐⭐ |
-| `git-workflow` | Git 操作自动化 | ⭐⭐ |
-| `memory-consolidation` | 记忆整理压缩 | ⭐⭐⭐ |
-| `mcp-connector` | 外部服务连接 | ⭐⭐⭐⭐ |
+| `web-research` | 聚合微信/网络多源搜索，结构化报告 | ⭐⭐ |
+| `code-review` | 质量审查 + 安全扫描 + 优化建议 | ⭐⭐⭐ |
+| `documentation` | README / API文档 / 变更日志 | ⭐⭐ |
+| `git-workflow` | 智能提交 + 分支管理 + PR 准备 | ⭐⭐ |
+| `memory-consolidation` | 日志压缩 + 长期记忆提炼 | ⭐⭐⭐ |
+| `mcp-connector` | GitHub / Docker / 数据库 / kubectl | ⭐⭐⭐⭐ |
 
 ---
 
-## 📖 使用示例
-
-### 1. 深度研究
-
-```bash
-# 标准研究
-/research AI Agent 框架 2026
-
-# 深度研究（更多来源）
-/research 量子计算 --depth=3 --sources=5
-
-# 输出格式指定
-/research 区块链 --format=markdown
-```
-
-### 2. 代码审查
-
-```bash
-# 审查当前文件
-/review
-
-# 审查指定文件
-/review src/auth.ts
-
-# 专注安全审查
-/review src/api/ --focus=security
-
-# 深度审查
-/review src/ --depth=3
-```
-
-### 3. 文档生成
-
-```bash
-# 生成 API 文档
-/docs src/api/
-
-# 生成 README
-/docs --type=readme --output=.
-
-# 生成教程
-/docs src/ --type=tutorial
-```
-
-### 4. Git 工作流
-
-```bash
-# 查看状态
-/git status
-
-# 智能提交
-/git commit
-
-# 创建分支
-/git branch feature/new-feature
-
-# 准备 PR
-/git pr
-```
-
-### 5. 记忆管理
-
-```bash
-# 查看状态
-/memory status
-
-# 整理记忆
-/memory consolidate
-
-# 搜索记忆
-/memory search Agent
-
-# 归档旧记忆
-/memory archive --days=30
-```
-
-### 6. 外部连接
-
-```bash
-# 查看连接状态
-/connect status
-
-# GitHub 操作
-/connect github --action=list
-
-# 数据库查询
-/connect database --action=query "SELECT * FROM users"
-
-# Docker 管理
-/connect docker --action=list
-```
-
----
-
-## 🔧 自定义
-
-### 添加新命令
-
-在 `commands/` 目录创建新文件：
-
-```markdown
-# commands/my-command.md
-
-trigger: /my-command [arguments]
-
-## Description
-[命令功能]
-
-## Handler
-1. [步骤 1]
-2. [步骤 2]
-
-## Examples
-/my-command arg1 arg2
-```
-
-### 添加新 Agent
-
-在 `agents/` 目录创建新文件：
-
-```markdown
-# agents/my-agent.md
-
-name: my-agent
-
-## Your Role
-[角色定义]
-
-## Responsibilities
-- [职责 1]
-- [职责 2]
-
-## Workflow
-1. [步骤 1]
-2. [步骤 2]
-```
+## 🛠️ 自定义扩展
 
 ### 添加新 Skill
 
-在 `skills/` 目录创建新目录：
+在 `skills/` 下创建目录和 `SKILL.md` 即可：
 
 ```
-skills/my-skill/
+skills/my-awesome-skill/
 └── SKILL.md
 ```
 
----
+Skill 会被 WorkBuddy 自动发现并根据触发词加载。
 
-## 📚 文档
+### 发布到 ClawHub
 
-- [安装指南](docs/installation.md) - 详细安装步骤
-- [使用手册](docs/usage.md) - 完整使用说明
-- [工作流示例](examples/workflow-examples.md) - 实际使用场景
+```bash
+clawhub login --token <your-token>
+clawhub package publish . \
+  --source-repo zhuang-HE/openclaw-toolkit \
+  --source-commit <commit-sha> \
+  --name openclaw-toolkit \
+  --version 1.0.1 \
+  --changelog "Your changelog here"
+```
 
 ---
 
 ## 🤝 贡献
 
-欢迎贡献！请遵循以下步骤：
+欢迎提交 Issue 和 Pull Request！
 
-1. Fork 本仓库
-2. 创建特性分支 (`git checkout -b feature/AmazingFeature`)
-3. 提交更改 (`git commit -m 'Add some AmazingFeature'`)
-4. 推送到分支 (`git push origin feature/AmazingFeature`)
-5. 开启 Pull Request
+- 🐛 报告 Bug → [Issue](https://github.com/zhuang-HE/openclaw-toolkit/issues/new/choose)
+- 💡 提出功能建议 → [Discussion](https://github.com/zhuang-HE/openclaw-toolkit/discussions)
+- 📖 完善文档或示例
+
+详见 [CONTRIBUTING.md](CONTRIBUTING.md)。
 
 ---
 
 ## 📄 许可证
 
-本项目采用 MIT 许可证 - 查看 [LICENSE](LICENSE) 文件了解详情。
-
----
-
-## 🙏 致谢
-
-- [OpenClaw](https://github.com/openclaw/openclaw) - 本地 AI 助手框架
-- AI 助手最佳实践社区 - 灵感和参考
+MIT License · © 2024-2026 [zhuang-HE](https://github.com/zhuang-HE)
 
 ---
 
 ## 📬 联系方式
 
-- 项目地址：https://github.com/zhuang-HE/openclaw-toolkit
-- 问题反馈：https://github.com/zhuang-HE/openclaw-toolkit/issues
-- OpenClaw 文档：https://docs.openclaw.ai
-- ClawHub: https://clawhub.com/skills/openclaw-toolkit
-
-## 🏷️ Topics
-
-[![Topics](https://img.shields.io/badge/topics-openclaw%20%7C%20ai--assistant%20%7C%20productivity%20%7C%20automation%20%7C%20workflow-blue)](https://github.com/zhuang-HE/openclaw-toolkit)
+- 🐛 问题反馈：[GitHub Issues](https://github.com/zhuang-HE/openclaw-toolkit/issues)
+- 💬 功能讨论：[GitHub Discussions](https://github.com/zhuang-HE/openclaw-toolkit/discussions)
+- 📦 ClawHub：[clawhub.ai/plugins/openclaw-toolkit](https://clawhub.ai/plugins/openclaw-toolkit)
+- 📖 OpenClaw 文档：[docs.openclaw.ai](https://docs.openclaw.ai)
 
 ---
 
+<div align="center">
+
 **Made with ❤️ for the OpenClaw Community**
+
+</div>

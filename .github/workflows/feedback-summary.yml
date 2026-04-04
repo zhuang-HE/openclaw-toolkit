@@ -1,0 +1,39 @@
+name: Feedback Dashboard
+
+on:
+  schedule:
+    # 每周一早上 9 点自动汇总一次 feedback issues
+    - cron: '0 1 * * 1'
+
+  # 也支持手动触发
+  workflow_dispatch:
+
+jobs:
+  feedback-summary:
+    name: Generate feedback summary
+    runs-on: ubuntu-latest
+    permissions:
+      issues: read
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Fetch feedback issues
+        id: fetch
+        run: |
+          echo "Fetching feedback issues..."
+          # 收集最近 30 天内的 feedback issues
+          FEEDBACKS=$(curl -s -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
+            "https://api.github.com/search/issues?q=repo:${{ github.repository }}+label:feedback+created:>=$(date -d '30 days ago' +%Y-%m-%d)" \
+            | jq '.total_count')
+
+          echo "feedback_count=$FEEDBACKS" >> $GITHUB_OUTPUT
+          echo "Last run: $(date)"
+
+      - name: Post summary comment on release issue
+        if: steps.fetch.outputs.feedback_count > 0
+        run: |
+          echo "📊 近期收到 ${{ steps.fetch.outputs.feedback_count }} 条用户反馈"
+          echo "建议：访问 https://github.com/${{ github.repository }}/issues?q=label:feedback"
+          echo "汇总后可在下一个 release note 中包含用户声音"
