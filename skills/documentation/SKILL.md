@@ -1,3 +1,12 @@
+---
+name: documentation
+description: >
+  技术文档生成和维护，创建清晰、完整、可维护的文档。
+  触发词：写文档、生成文档、API文档、README、接口文档、技术文档、
+  写说明、文档生成、documentation、changelog、接口说明、
+  帮我写个说明、补充注释、生成 README
+---
+
 # Documentation Skill
 
 name: documentation

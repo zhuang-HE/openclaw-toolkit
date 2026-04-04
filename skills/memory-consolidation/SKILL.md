@@ -1,3 +1,12 @@
+---
+name: memory-consolidation
+description: >
+  定期整理和压缩记忆，将短期日志提炼为长期记忆，保持记忆系统高效。
+  触发词：整理记忆、压缩记忆、记忆整理、清理日志、巩固记忆、
+  memory consolidation、整理 memory、清理 MEMORY.md、
+  日志太多了、记忆文件太大、定期整理、记忆管理
+---
+
 # Memory Consolidation Skill
 
 name: memory-consolidation

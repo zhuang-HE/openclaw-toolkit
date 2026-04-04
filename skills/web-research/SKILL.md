@@ -1,6 +1,13 @@
-# Web Research Skill
-
+---
 name: web-research
+description: >
+  深度网络研究和信息整理，提供结构化研究报告。
+  触发词：调研、研究、搜索资料、网络搜索、查询信息、竞品分析、市场调研、
+  deep research、information gathering、web search、查一下、帮我查、
+  了解一下、搜一下、查找资料
+---
+
+# Web Research Skill
 
 ## Task
 深度网络研究和信息整理，提供结构化研究报告。
@@ -13,14 +20,14 @@ name: web-research
 3. 识别关键搜索词和排除词
 
 ### Phase 2: 执行搜索
-1. 使用 searxng skill 进行多角度搜索
-2. 至少 3 个不同搜索查询覆盖主题
+1. 使用 `web_search` 进行多角度搜索（至少 3 个不同查询）
+2. 覆盖主题的不同维度（官方/社区/媒体）
 3. 记录搜索来源便于追溯
 
 ### Phase 3: 获取内容
-1. 用 web_fetch 获取高相关性页面内容
-2. 用 browser 工具验证关键信息（如需要交互）
-3. 提取核心数据和引用
+1. 用 `web_fetch` 获取高相关性页面内容
+2. 提取核心数据和引用
+3. 交叉验证关键信息
 
 ### Phase 4: 整理报告
 1. 综合多来源信息
@@ -68,10 +75,9 @@ name: web-research
 
 ## Tools Used
 
-- `searxng` - 隐私保护的网络搜索
+- `web_search` - 网络搜索（通用，替代 searxng）
 - `web_fetch` - 网页内容提取
-- `browser` - 浏览器自动化（复杂页面）
-- `write` - 保存研究报告
+- `write_to_file` - 保存研究报告
 
 ## Examples
 
@@ -97,8 +103,19 @@ name: web-research
 4. 输出结构化报告
 ```
 
+### Example 3: 政策/法规调研
+```
+用户：查一下无人机保险的监管要求
+
+执行：
+1. 搜索最新无人机管理条例
+2. 查找保险监管政策文件
+3. 整理合规要求报告
+```
+
 ## Notes
 
 - 如遇付费墙，寻找替代来源或摘要
 - 敏感话题需多方验证，避免单一来源偏见
 - 技术文档优先查看官方最新版本
+- 微信公众号文章适合中文信息密集场景（可用 wechat-article-search skill）

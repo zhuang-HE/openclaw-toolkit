@@ -1,3 +1,12 @@
+---
+name: code-review
+description: >
+  代码质量审查和安全审计，提供可执行的改进建议。
+  触发词：代码审查、code review、审查代码、检查代码、代码质量、安全审计、
+  代码安全、代码分析、找 bug、安全漏洞、代码优化建议、review 一下、
+  帮我看看代码、检查一下这段代码
+---
+
 # Code Review Skill
 
 name: code-review
@@ -148,9 +157,9 @@ name: code-review
 ## Tools Used
 
 - `read` - 读取代码文件
-- `exec` - 运行 linter/测试（如配置）
-- `write` - 保存审查报告
-- `sessions_spawn` - 复杂项目可启动子代理专项审查
+- `execute_command` - 运行 linter/测试（如 eslint、pylint）
+- `write_to_file` - 保存审查报告
+- `task` - 复杂项目可启动子代理专项审查
 
 ## Language Support
 

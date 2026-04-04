@@ -1,3 +1,12 @@
+---
+name: git-workflow
+description: >
+  Git版本控制和协作工作流管理，智能提交、分支管理和PR准备。
+  触发词：git提交、commit、写commit message、生成commit、分支管理、
+  创建分支、合并分支、PR、pull request、解决冲突、git操作、
+  帮我提交、代码提交、推送代码、生成 changelog、版本发布
+---
+
 # Git Workflow Skill
 
 name: git-workflow

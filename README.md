@@ -68,14 +68,19 @@ ls ~/.openclaw/workspace/skills/
 
 ```bash
 # 1. 克隆或下载本仓库
-git clone https://github.com/openclaw/openclaw-toolkit.git
+git clone https://github.com/zhuang-HE/openclaw-toolkit.git
 
-# 2. 复制到 OpenClaw workspace
-cp -r openclaw-toolkit/* ~/.openclaw/workspace/
+# 2. 复制 skills 到 WorkBuddy 用户级目录（Windows）
+xcopy /E /I openclaw-toolkit\skills\* %USERPROFILE%\.workbuddy\skills\
+
+# 复制 skills 到 WorkBuddy 用户级目录（macOS/Linux）
+cp -r openclaw-toolkit/skills/* ~/.workbuddy/skills/
 
 # 3. 验证安装
-ls ~/.openclaw/workspace/commands/
+ls ~/.workbuddy/skills/
 ```
+
+> **提示**: 安装到 `~/.workbuddy/skills/` 后，WorkBuddy 会自动识别 SKILL.md 中的 frontmatter，根据触发词自动加载对应技能。
 
 ### 使用命令
 

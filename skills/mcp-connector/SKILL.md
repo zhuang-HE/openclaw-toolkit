@@ -1,3 +1,12 @@
+---
+name: mcp-connector
+description: >
+  连接外部服务和 API，实现 MCP 协议的集成能力。
+  触发词：连接外部服务、集成 API、连接 GitHub、连接数据库、
+  Docker 操作、kubectl、AWS CLI、调用外部工具、MCP 连接、
+  服务集成、检查可用连接、配置外部连接
+---
+
 # MCP Connector Skill
 
 name: mcp-connector
