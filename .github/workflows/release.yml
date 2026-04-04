@@ -9,6 +9,8 @@ jobs:
   release:
     name: Create Release
     runs-on: ubuntu-latest
+    outputs:
+      tag_name: ${{ steps.version.outputs.tag_name }}
     permissions:
       contents: write
 
@@ -72,14 +74,16 @@ jobs:
       - name: Publish to ClawHub
         env:
           CLAWHUB_TOKEN: ${{ secrets.CLAWHUB_TOKEN }}
+          GITHUB_SHA: ${{ github.sha }}
         run: |
           VERSION="${{ needs.release.outputs.tag_name }}"
           echo "Publishing version: ${VERSION}"
+          echo "Commit SHA: ${GITHUB_SHA}"
           
           clawhub login --token "$CLAWHUB_TOKEN"
           clawhub package publish . \
             --source-repo zhuang-HE/openclaw-toolkit \
-            --source-ref main \
+            --source-commit "${GITHUB_SHA}" \
             --family bundle-plugin \
             --name openclaw-toolkit \
             --version "${VERSION#v}" \
