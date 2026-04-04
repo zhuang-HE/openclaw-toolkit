@@ -16,6 +16,8 @@ jobs:
   release:
     name: Create Release
     runs-on: ubuntu-latest
+    outputs:
+      version: ${{ steps.version.outputs.version }}
     permissions:
       contents: write
 
@@ -27,14 +29,21 @@ jobs:
         id: version
         run: |
           # Tag push: GITHUB_REF = refs/tags/v1.2.3
-          # Workflow dispatch: inputs.version
+          # Workflow dispatch: github.event.inputs.version
           if [[ "$GITHUB_REF" == refs/tags/* ]]; then
             VERSION="${GITHUB_REF#refs/tags/}"
+          elif [[ -n "${{ github.event.inputs.version }}" ]]; then
+            VERSION="${{ github.event.inputs.version }}"
+            # 确保有 v 前缀
+            if [[ ! "$VERSION" =~ ^v ]]; then
+              VERSION="v$VERSION"
+            fi
           else
-            VERSION="${{ inputs.version }}"
+            echo "Error: No version provided"
+            exit 1
           fi
           echo "version=$VERSION" >> $GITHUB_OUTPUT
-          echo "tag_name=${VERSION}" >> $GITHUB_OUTPUT
+          echo "tag_name=$VERSION" >> $GITHUB_OUTPUT
           echo "Releasing version: $VERSION"
 
       - name: Generate changelog
