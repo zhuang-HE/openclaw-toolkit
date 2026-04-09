@@ -518,11 +518,22 @@ def generate_monthly_report(sales_data, accident_data, new_cases, trend_analysis
     return report_file
 
 
-# ==================== 消息推送 ====================
+# ==================== 消息推送（增强版：重试 + 退避） ====================
 
-def push_report_to_feishu(report_file, stats, trend_analysis, accident_db_count, alert_count):
-    """推送报告到飞书"""
-    logger.info("开始推送报告到飞书...")
+def push_report_to_feishu(report_file, stats, trend_analysis, accident_db_count, alert_count, max_retries=3, base_delay=5):
+    """
+    推送报告到飞书（带重试机制和指数退避）
+    
+    Args:
+        report_file: 报告文件路径
+        stats: 统计数据
+        trend_analysis: 趋势分析
+        accident_db_count: 事故数据库计数
+        alert_count: 告警数量
+        max_retries: 最大重试次数（默认 3 次）
+        base_delay: 基础延迟秒数（默认 5 秒，指数退避）
+    """
+    logger.info(f"开始推送报告到飞书（最大重试 {max_retries} 次）...")
     
     today = datetime.now().strftime('%Y-%m-%d')
     period = datetime.now().strftime('%Y-%m')
@@ -572,19 +583,63 @@ def push_report_to_feishu(report_file, stats, trend_analysis, accident_db_count,
         }
     }
     
-    try:
-        response = requests.post(WEBHOOK_URL_MONTHLY, json=content, headers={"Content-Type": "application/json"})
-        result = response.json()
-        
-        if result.get('code') == 0 or result.get('StatusCode') == 0:
-            logger.info("飞书推送成功")
-            return True
-        else:
-            logger.error(f"飞书推送失败：{result}")
+    # 重试逻辑（指数退避）
+    for attempt in range(1, max_retries + 1):
+        try:
+            # 发送请求前增加随机抖动（避免并发冲突）
+            if attempt > 1:
+                import random
+                jitter = random.uniform(0.5, 1.5)
+                delay = base_delay * (2 ** (attempt - 1)) * jitter
+                logger.info(f"等待 {delay:.1f} 秒后重试（指数退避 + 随机抖动）...")
+                time.sleep(delay)
+            
+            response = requests.post(
+                WEBHOOK_URL_MONTHLY, 
+                json=content, 
+                headers={"Content-Type": "application/json"},
+                timeout=30
+            )
+            result = response.json()
+            
+            # 飞书 API 成功判断
+            if result.get('code') == 0 or result.get('StatusCode') == 0:
+                logger.info(f"飞书推送成功（尝试 {attempt}/{max_retries}）")
+                return True
+            
+            # 检查错误类型
+            error_code = result.get('code', 0)
+            error_msg = result.get('msg', 'Unknown error')
+            
+            # 频率限制（11232）需要重试
+            if error_code == 11232:
+                logger.warning(f"飞书频率限制（第 {attempt} 次）：{error_msg}")
+                if attempt < max_retries:
+                    continue  # 继续重试
+                else:
+                    logger.error(f"飞书推送失败：频率限制，已重试 {max_retries} 次")
+                    return False
+            
+            # 其他错误不重试
+            logger.error(f"飞书推送失败（错误码 {error_code}）：{error_msg}")
             return False
-    except Exception as e:
-        logger.error(f"飞书推送异常：{e}")
-        return False
+            
+        except requests.exceptions.Timeout as e:
+            logger.warning(f"请求超时（第 {attempt} 次）：{e}")
+            if attempt >= max_retries:
+                logger.error(f"飞书推送失败：超时，已重试 {max_retries} 次")
+                return False
+        except requests.exceptions.ConnectionError as e:
+            logger.warning(f"连接错误（第 {attempt} 次）：{e}")
+            if attempt >= max_retries:
+                logger.error(f"飞书推送失败：连接错误，已重试 {max_retries} 次")
+                return False
+        except Exception as e:
+            logger.error(f"飞书推送异常（第 {attempt} 次）：{e}")
+            if attempt >= max_retries:
+                return False
+    
+    return False
 
 
 # ==================== 主函数 ====================

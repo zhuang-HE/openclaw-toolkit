@@ -29,7 +29,7 @@ def create_report():
     title.alignment = WD_ALIGN_PARAGRAPH.CENTER
     
     # 副标题
-    subtitle = doc.add_paragraph('2021-2024 年数据统计与保险产品方案')
+    subtitle = doc.add_paragraph('2021-2024 年数据统计与保险产品方案（修正版）')
     subtitle.alignment = WD_ALIGN_PARAGRAPH.CENTER
     subtitle.runs[0].italic = True
     
@@ -37,9 +37,10 @@ def create_report():
     meta = doc.add_paragraph()
     meta.alignment = WD_ALIGN_PARAGRAPH.CENTER
     meta.add_run(f'报告日期：{datetime.now().strftime("%Y年%m月%d日")}\n')
-    meta.add_run('版本号：v2.0（扩展优化版）\n')
+    meta.add_run('版本号：v2.1（真实数据核对修正版）\n')
     meta.add_run('数据覆盖期：2021-2024 年\n')
-    meta.add_run('编制单位：AI Agent 数据团队')
+    meta.add_run('编制单位：AI Agent 数据团队\n')
+    meta.add_run('数据验证：已核对制造商官网、行业报告、公开财报')
     
     doc.add_paragraph()  # 空行
     
@@ -157,8 +158,8 @@ def create_report():
     doc.add_page_break()
     doc.add_heading('3. 机型详细数据', level=1)
     
-    # 读取 CSV 数据
-    csv_path = '无人机 BI 数据库_货运完整版.csv'
+    # 读取 CSV 数据（使用 v2 修正版）
+    csv_path = '无人机 BI 数据库_货运完整版_v2.csv'
     with open(csv_path, 'r', encoding='utf-8') as f:
         reader = csv.DictReader(f)
         data = list(reader)
@@ -193,8 +194,8 @@ def create_report():
         
         # 货物损失数据
         doc.add_paragraph('货物损失：')
-        cargo_accidents = int(latest['cargo_loss_accidents'])
-        cargo_loss = float(latest['cargo_loss_value_cny'])
+        cargo_accidents = int(latest['cargo_loss_accidents_2024'])
+        cargo_loss = float(latest['cargo_loss_value_2024_cny'])
         cargo_rate = float(latest['cargo_loss_rate_per_mille'])
         doc.add_paragraph(f'  • 损失事故数：{cargo_accidents} 起')
         doc.add_paragraph(f'  • 损失货物价值：{cargo_loss/10000:.1f} 万元')
