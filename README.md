@@ -10,7 +10,7 @@
 [![GitHub forks](https://img.shields.io/github/forks/zhuang-HE/openclaw-toolkit?style=social)](https://github.com/zhuang-HE/openclaw-toolkit/network/members)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](CONTRIBUTING.md)
 
-**15 个预定义组件 · Commands / Agents / Skills 三层解耦 · 一键安装**
+**16 个预定义组件 · Commands / Agents / Skills 三层解耦 · 一键安装**
 
 [快速开始](#-快速开始) · [核心组件](#-核心组件) · [使用演示](#-使用演示) · [安装方式](#-安装) · [贡献指南](CONTRIBUTING.md)
 
@@ -27,11 +27,12 @@ OpenClaw Toolkit 将业界领先的 AI 助手最佳实践打包成开箱即用�
 | 特性 | 说明 |
 |------|------|
 | 🧩 **三层解耦架构** | Commands → Agents → Skills，职责清晰，易于扩展 |
-| 🚀 **15 个预定义组件** | 覆盖研究、审查、文档、工作流、记忆、外部集成 |
+| 🚀 **16 个预定义组件** | 覆盖研究、审查、文档、工作流、记忆、外部集成、知识图谱 |
 | 🌍 **多源研究** | 聚合搜索引擎 + 微信公众号 + 通用搜索，结果更全面 |
 | 🔍 **安全代码审查** | 自动识别安全漏洞、代码质量问题和优化建议 |
 | 🧠 **记忆系统** | 自动整理和压缩工作记忆，保持长期知识可用 |
 | 🔗 **外部服务集成** | GitHub、Docker、数据库等外部工具无缝连接 |
+| 📊 **知识图谱** | Graphify 代码知识图谱，71.5x Token 节省 |
 
 ---
 
@@ -52,13 +53,14 @@ openclaw-toolkit/
 │   ├── code-reviewer.md   # 审查代理：代码质量 + 安全审计
 │   └── documentation-writer.md  # 文档代理：技术文档编写
 │
-├── skills/                 # 6 个技能模块（可复用能力）
+├── skills/                 # 7 个技能模块（可复用能力）
 │   ├── web-research/       # 网络研究
-│   ├── code-review/       # 代码审查
-│   ├── documentation/     # 文档生成
-│   ├── git-workflow/      # Git 工作流
+│   ├── code-review/        # 代码审查
+│   ├── documentation/       # 文档生成
+│   ├── git-workflow/       # Git 工作流
 │   ├── memory-consolidation/  # 记忆整理
-│   └── mcp-connector/    # 外部连接
+│   ├── mcp-connector/      # 外部连接
+│   └── fusion-workflow-hub/ # 🔥 融合工作流中心
 │
 └── examples/              # 工作流示例
     └── workflow-examples.md
@@ -103,6 +105,19 @@ openclaw-toolkit/
   ✓ 保存至 docs/api.md
 ```
 
+### 🔥 Fusion Workflow Hub 使用示例
+
+```
+你：帮我分析这个代码库的结构
+─────────────────────────────────────────────────
+[Tool] fusion-workflow-hub
+
+  ✓ 调用 Graphify 构建知识图谱
+  ✓ 读取 GRAPH_REPORT.md 理解架构
+  ✓ 使用 query 查询关键模块
+  ✓ 生成交互式图谱 graph.html
+```
+
 ### 命令速查
 
 ```bash
@@ -127,6 +142,7 @@ clawhub install zhuang-HE/openclaw-toolkit
 # 或者安装单个 skill
 clawhub install web-research
 clawhub install code-review
+clawhub install fusion-workflow-hub
 ```
 
 ### 方式二：手动安装
@@ -173,6 +189,42 @@ ls ~/.workbuddy/skills/
 | `git-workflow` | 智能提交 + 分支管理 + PR 准备 | ⭐⭐ |
 | `memory-consolidation` | 日志压缩 + 长期记忆提炼 | ⭐⭐⭐ |
 | `mcp-connector` | GitHub / Docker / 数据库 / kubectl | ⭐⭐⭐⭐ |
+| `fusion-workflow-hub` | 🔥 Graphify + ECC + OpenClaw 融合工作流 | ⭐⭐⭐⭐ |
+
+---
+
+## 🔥 融合工作流中心 (Fusion Workflow Hub)
+
+整合三大 AI 开发工具的能力，形成完整的智能编码工作流：
+
+| 工具 | 核心能力 | Token 节省 |
+|------|----------|------------|
+| **Graphify** | 代码知识图谱构建与查询 | 71.5x |
+| **ECC** | 68 命令、36 Agent、151 Skill | - |
+| **OpenClaw** | 平台集成规则与自动化 | - |
+
+### 工作流一：代码库深度分析
+
+```bash
+python -m graphify <目录路径>        # 构建知识图谱
+python -m graphify query "<问题>"    # 查询
+python -m graphify path "<A>" "<B>" # 路径追踪
+```
+
+### 工作流二：功能开发（TDD）
+
+```
+use_skill tdd-workflow    # 测试先行
+use_skill code-review     # 代码审查
+python -m graphify . --update  # 增量更新
+```
+
+### 工作流三：持续学习优化
+
+```
+use_skill continuous-learning-v2  # 经验积累
+use_skill strategic-compact        # 上下文压缩
+```
 
 ---
 
@@ -197,7 +249,7 @@ clawhub package publish . \
   --source-repo zhuang-HE/openclaw-toolkit \
   --source-commit <commit-sha> \
   --name openclaw-toolkit \
-  --version 1.0.1 \
+  --version 1.0.2 \
   --changelog "Your changelog here"
 ```
 
