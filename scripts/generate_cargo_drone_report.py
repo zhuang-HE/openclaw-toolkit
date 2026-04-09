@@ -37,7 +37,7 @@ def create_report():
     meta = doc.add_paragraph()
     meta.alignment = WD_ALIGN_PARAGRAPH.CENTER
     meta.add_run(f'报告日期：{datetime.now().strftime("%Y年%m月%d日")}\n')
-    meta.add_run('版本号：v2.1（真实数据核对修正版）\n')
+    meta.add_run('版本号：v2.2（字段对齐版）\n')
     meta.add_run('数据覆盖期：2021-2024 年\n')
     meta.add_run('编制单位：AI Agent 数据团队\n')
     meta.add_run('数据验证：已核对制造商官网、行业报告、公开财报')
@@ -158,8 +158,8 @@ def create_report():
     doc.add_page_break()
     doc.add_heading('3. 机型详细数据', level=1)
     
-    # 读取 CSV 数据（使用 v2 修正版）
-    csv_path = '无人机 BI 数据库_货运完整版_v2.csv'
+    # 读取 CSV 数据（使用对齐版）
+    csv_path = '无人机 BI 数据库_货运对齐版.csv'
     with open(csv_path, 'r', encoding='utf-8') as f:
         reader = csv.DictReader(f)
         data = list(reader)
@@ -167,7 +167,7 @@ def create_report():
     # 按机型分组
     models_dict = {}
     for row in data:
-        model = row['model']
+        model = row.get('型号', '')
         if model not in models_dict:
             models_dict[model] = []
         models_dict[model].append(row)
@@ -178,15 +178,15 @@ def create_report():
         # 取最新年份数据
         latest = rows[-1]
         
-        doc.add_paragraph(f'品牌：{latest["brand"]}')
-        doc.add_paragraph(f'单价：{latest["unit_price_cny"]} 元')
-        doc.add_paragraph(f'用途：{latest["purpose"]}')
-        doc.add_paragraph(f'风险等级：{latest["risk_level"]}（系数：{latest["risk_coefficient"]}）')
+        doc.add_paragraph(f'品牌：{latest.get("brand", "")}')
+        doc.add_paragraph(f'单价：{int(latest.get("price_cny", 0)):,} 元')
+        doc.add_paragraph(f'用途：{latest.get("purpose", "")}')
+        doc.add_paragraph(f'风险等级：{latest.get("risk_level", "")}（系数：{latest.get("risk_coefficient", 0)}）')
         
         # 运营数据
         doc.add_paragraph('运营数据：')
-        total_flights = int(latest['flights_2024'])
-        total_accidents = int(latest['total_accidents'])
+        total_flights = int(latest.get('flights_2024', 0))
+        total_accidents = int(latest.get('total_accidents', 0))
         accident_rate = (total_accidents / total_flights * 100) if total_flights > 0 else 0
         doc.add_paragraph(f'  • 2024 年运输架次：{total_flights:,} 架次')
         doc.add_paragraph(f'  • 累计事故数：{total_accidents} 起')
@@ -194,20 +194,20 @@ def create_report():
         
         # 货物损失数据
         doc.add_paragraph('货物损失：')
-        cargo_accidents = int(latest['cargo_loss_accidents_2024'])
-        cargo_loss = float(latest['cargo_loss_value_2024_cny'])
-        cargo_rate = float(latest['cargo_loss_rate_per_mille'])
+        cargo_accidents = int(latest.get('cargo_accidents_2024', 0))
+        cargo_loss = float(latest.get('cargo_loss_2024_cny', 0))
+        cargo_rate = float(latest.get('cargo_loss_rate_per_mille', 0))
         doc.add_paragraph(f'  • 损失事故数：{cargo_accidents} 起')
         doc.add_paragraph(f'  • 损失货物价值：{cargo_loss/10000:.1f} 万元')
         doc.add_paragraph(f'  • 损失率：{cargo_rate:.3f}‰')
         
         # 保险费率
         doc.add_paragraph('保险费率：')
-        doc.add_paragraph(f'  • 机身险：{latest["insurance_rate_hull_per_mille"]}‰')
-        doc.add_paragraph(f'  • 三者险：{latest["insurance_rate_liability_per_mille"]}‰')
-        doc.add_paragraph(f'  • 货物险：{latest["insurance_rate_cargo_per_mille"]}‰')
-        doc.add_paragraph(f'  • 综合费率：{latest["comprehensive_rate_percent"]}%')
-        doc.add_paragraph(f'  • 年保费：{latest["annual_premium_cny"]} 元')
+        doc.add_paragraph(f'  • 机身险：{latest.get("insurance_rate_hull_per_mille", 0)}‰')
+        doc.add_paragraph(f'  • 三者险：{latest.get("insurance_rate_liability_per_mille", 0)}‰')
+        doc.add_paragraph(f'  • 货物险：{latest.get("insurance_rate_cargo_per_mille", 0)}‰')
+        doc.add_paragraph(f'  • 综合费率：{latest.get("comprehensive_rate_percent", 0)}%')
+        doc.add_paragraph(f'  • 年保费：{latest.get("annual_premium_cny", 0):,} 元')
         
         doc.add_paragraph()
     
