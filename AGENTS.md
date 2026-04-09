@@ -33,18 +33,27 @@ Don't ask permission. Just do it.
 │   ├── docs.md            # /docs 命令
 │   ├── git.md             # /git 命令
 │   ├── memory.md          # /memory 命令
-│   └── connect.md         # /connect 命令
+│   ├── connect.md         # /connect 命令
+│   ├── quality-gate.md    # /quality-gate 质量检查 ⭐ NEW
+│   └── harness-audit.md   # /harness-audit 配置审计 ⭐ NEW
 ├── agents/                # 子代理定义
 │   ├── researcher.md      # 研究代理
 │   ├── code-reviewer.md   # 代码审查代理
-│   └── documentation-writer.md  # 文档代理
+│   ├── documentation-writer.md  # 文档代理
+│   ├── security-reviewer.md     # 安全审查代理 ⭐ NEW
+│   ├── build-error-resolver.md  # 构建错误解决代理 ⭐ NEW
+│   ├── planner.md               # 规划代理 ⭐ NEW
+│   └── architect.md             # 架构设计代理 ⭐ NEW
 ├── skills/                # 技能定义
 │   ├── web-research/      # 网络研究技能
 │   ├── code-review/       # 代码审查技能
 │   ├── documentation/     # 文档生成技能
 │   ├── git-workflow/      # Git 工作流技能
 │   ├── memory-consolidation/  # 记忆整理技能
-│   └── mcp-connector/     # 外部连接技能
+│   ├── mcp-connector/     # 外部连接技能
+│   ├── documentation-lookup/  # 文档查找技能 ⭐ NEW
+│   ├── deep-research/         # 深度研究技能 ⭐ NEW
+│   └── continuous-learning/   # 持续学习 v2 (instinct-based) ⭐ NEW
 └── memory/                # 记忆日志
     ├── YYYY-MM-DD.md      # 每日日志
     └── archive/           # 归档目录
