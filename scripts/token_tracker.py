@@ -13,6 +13,7 @@ import os
 from datetime import datetime, timedelta
 from pathlib import Path
 import csv
+import requests
 
 # 配置
 WORKSPACE = "/home/admin/.openclaw/workspace"
@@ -20,6 +21,9 @@ LOG_DIR = f"{WORKSPACE}/logs"
 TOKEN_STATS_FILE = f"{LOG_DIR}/token_stats.json"
 TOKEN_HISTORY_FILE = f"{LOG_DIR}/token_history.csv"
 DAILY_REPORT_FILE = f"{LOG_DIR}/token_daily_report.md"
+
+# 飞书 Webhook
+FEISHU_WEBHOOK = "https://open.feishu.cn/open-apis/bot/v2/hook/587f3c74-4345-4fc6-98b3-b2a935f6787e"
 
 # 模型价格（每 1000 tokens）
 MODEL_PRICES = {
@@ -217,17 +221,147 @@ def generate_daily_report(date=None):
     
     return report, day_stats
 
+def format_feishu_message(stats):
+    """格式化飞书消息"""
+    date = stats.get('date', 'Unknown')
+    total_tokens = int(stats.get('total_tokens', 0))
+    total_cost = float(stats.get('total_cost', 0.0))
+    session_count = int(stats.get('session_count', 0))
+    input_tokens = int(stats.get('input_tokens', 0))
+    output_tokens = int(stats.get('output_tokens', 0))
+    
+    # 计算平均
+    avg_tokens = total_tokens // max(1, session_count)
+    avg_cost = total_cost / max(1, session_count)
+    
+    message = {
+        "msg_type": "post",
+        "content": {
+            "post": {
+                "zh_cn": {
+                    "title": f"📊 Token 消耗日报 - {date}",
+                    "content": [
+                        [
+                            {
+                                "tag": "text",
+                                "text": f"日期：{date}\n\n"
+                            }
+                        ],
+                        [
+                            {
+                                "tag": "text",
+                                "text": "📈 消耗统计\n"
+                            }
+                        ],
+                        [
+                            {
+                                "tag": "text",
+                                "text": f"输入 Token: {input_tokens:,}\n"
+                            }
+                        ],
+                        [
+                            {
+                                "tag": "text",
+                                "text": f"输出 Token: {output_tokens:,}\n"
+                            }
+                        ],
+                        [
+                            {
+                                "tag": "text",
+                                "text": f"总消耗：{total_tokens:,} tokens\n"
+                            }
+                        ],
+                        [
+                            {
+                                "tag": "text",
+                                "text": f"对话次数：{session_count} 次\n"
+                            }
+                        ],
+                        [
+                            {
+                                "tag": "text",
+                                "text": f"总成本：${total_cost:.6f}\n\n"
+                            }
+                        ],
+                        [
+                            {
+                                "tag": "text",
+                                "text": "📉 平均统计\n"
+                            }
+                        ],
+                        [
+                            {
+                                "tag": "text",
+                                "text": f"平均每次对话：{avg_tokens:,} tokens\n"
+                            }
+                        ],
+                        [
+                            {
+                                "tag": "text",
+                                "text": f"平均成本：${avg_cost:.6f}\n\n"
+                            }
+                        ],
+                        [
+                            {
+                                "tag": "text",
+                                "text": "💡 Token 优化建议\n"
+                            }
+                        ],
+                        [
+                            {
+                                "tag": "text",
+                                "text": "1. 使用知识图谱查询 - 71.5 倍节省\n"
+                            }
+                        ],
+                        [
+                            {
+                                "tag": "text",
+                                "text": "2. 选择合适的模式 (L1/L2/L3)\n"
+                            }
+                        ],
+                        [
+                            {
+                                "tag": "text",
+                                "text": "3. 避免重复查询 - 使用缓存"
+                            }
+                        ]
+                    ]
+                }
+            }
+        }
+    }
+    
+    return message
+
+def send_feishu_report(stats):
+    """发送飞书日报"""
+    message = format_feishu_message(stats)
+    
+    try:
+        response = requests.post(FEISHU_WEBHOOK, json=message)
+        response.raise_for_status()
+        print(f"✅ 飞书日报已发送：{stats.get('date')}")
+        print(f"   总消耗：{int(stats.get('total_tokens', 0)):,} tokens")
+        print(f"   总成本：${float(stats.get('total_cost', 0.0)):.6f}")
+        return True
+    except Exception as e:
+        print(f"❌ 飞书发送失败：{e}")
+        return False
+
 def send_daily_report():
     """发送日报（每天 0 点执行）"""
     # 生成昨天的报告
     yesterday = (datetime.now() - timedelta(days=1)).strftime('%Y-%m-%d')
     report, stats = generate_daily_report(yesterday)
     
-    # 这里可以集成飞书/邮件等通知
+    # 发送到飞书
     print(f"日报已生成：{DAILY_REPORT_FILE}")
     print(f"日期：{yesterday}")
     print(f"总消耗：{int(stats.get('total_tokens', 0)):,} tokens")
     print(f"总成本：${float(stats.get('total_cost', 0.0)):.6f}")
+    
+    # 飞书推送
+    send_feishu_report(stats)
     
     return report, stats
 
