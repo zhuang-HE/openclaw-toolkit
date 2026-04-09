@@ -1,0 +1,262 @@
+{
+  "version": "2.0.0",
+  "description": "OpenClaw Hooks System - Migrated from everything-claude-code",
+  "profiles": {
+    "minimal": "Essential lifecycle and safety hooks only",
+    "standard": "Default balanced quality + safety checks",
+    "strict": "Additional reminders and stricter guardrails"
+  },
+  "currentProfile": "standard",
+  "disabledHooks": [],
+  "hooks": {
+    "SessionStart": [
+      {
+        "id": "session:start",
+        "type": "command",
+        "command": "node hooks/scripts/session-start.js",
+        "description": "Load previous context and detect package manager",
+        "timeout": 10,
+        "async": false
+      }
+    ],
+    "PreToolUse": {
+      "Bash": [
+        {
+          "id": "pre:bash:tmux-reminder",
+          "type": "command",
+          "command": "node hooks/scripts/pre-bash-tmux-reminder.js",
+          "description": "Suggest tmux for long-running commands",
+          "timeout": 5,
+          "async": false,
+          "profile": "standard"
+        },
+        {
+          "id": "pre:bash:dev-server-block",
+          "type": "command",
+          "command": "node hooks/scripts/pre-bash-dev-server-block.js",
+          "description": "Block dev servers outside tmux",
+          "timeout": 5,
+          "async": false,
+          "exitCode": 2,
+          "profile": "standard"
+        },
+        {
+          "id": "pre:bash:git-push-reminder",
+          "type": "command",
+          "command": "node hooks/scripts/pre-bash-git-push-reminder.js",
+          "description": "Remind to review before git push",
+          "timeout": 5,
+          "async": false,
+          "profile": "minimal"
+        },
+        {
+          "id": "pre:bash:commit-quality",
+          "type": "command",
+          "command": "node hooks/scripts/pre-bash-commit-quality.js",
+          "description": "Run quality checks before git commit",
+          "timeout": 30,
+          "async": false,
+          "exitCode": 2,
+          "profile": "standard"
+        }
+      ],
+      "Write": [
+        {
+          "id": "pre:write:doc-warning",
+          "type": "command",
+          "command": "node hooks/scripts/pre-write-doc-warn.js",
+          "description": "Warn about non-standard .md/.txt files",
+          "timeout": 5,
+          "async": false,
+          "profile": "standard"
+        },
+        {
+          "id": "pre:write:config-protection",
+          "type": "command",
+          "command": "node hooks/scripts/config-protection.js",
+          "description": "Protect sensitive config files from accidental overwrites",
+          "timeout": 5,
+          "async": false,
+          "exitCode": 2,
+          "profile": "strict"
+        }
+      ],
+      "Edit": [
+        {
+          "id": "pre:edit:strategic-compact",
+          "type": "command",
+          "command": "node hooks/scripts/strategic-compact.js",
+          "description": "Suggest manual compact at logical intervals",
+          "timeout": 5,
+          "async": false,
+          "profile": "standard"
+        }
+      ]
+    },
+    "PostToolUse": {
+      "Bash": [
+        {
+          "id": "post:bash:command-log",
+          "type": "command",
+          "command": "node hooks/scripts/post-bash-command-log.js",
+          "description": "Log command execution for session history",
+          "timeout": 5,
+          "async": true,
+          "profile": "minimal"
+        },
+        {
+          "id": "post:bash:build-complete",
+          "type": "command",
+          "command": "node hooks/scripts/post-bash-build-complete.js",
+          "description": "Background analysis after build commands",
+          "timeout": 60,
+          "async": true,
+          "profile": "standard"
+        },
+        {
+          "id": "post:bash:pr-created",
+          "type": "command",
+          "command": "node hooks/scripts/post-bash-pr-created.js",
+          "description": "Log PR URL after gh pr create",
+          "timeout": 10,
+          "async": true,
+          "profile": "minimal"
+        }
+      ],
+      "Edit": [
+        {
+          "id": "post:edit:console-warn",
+          "type": "command",
+          "command": "node hooks/scripts/post-edit-console-warn.js",
+          "description": "Warn about console.log statements",
+          "timeout": 5,
+          "async": false,
+          "profile": "standard"
+        },
+        {
+          "id": "post:edit:typecheck",
+          "type": "command",
+          "command": "node hooks/scripts/post-edit-typecheck.js",
+          "description": "Run tsc --noEmit after TS edits",
+          "timeout": 30,
+          "async": true,
+          "profile": "standard"
+        },
+        {
+          "id": "post:edit:format",
+          "type": "command",
+          "command": "node hooks/scripts/post-edit-format.js",
+          "description": "Auto-format with Prettier after edits",
+          "timeout": 15,
+          "async": true,
+          "profile": "standard"
+        },
+        {
+          "id": "post:edit:design-quality",
+          "type": "command",
+          "command": "node hooks/scripts/design-quality-check.js",
+          "description": "Warn when frontend drifts toward generic UI",
+          "timeout": 10,
+          "async": false,
+          "profile": "strict"
+        }
+      ],
+      "Write": [
+        {
+          "id": "post:write:console-warn",
+          "type": "command",
+          "command": "node hooks/scripts/post-edit-console-warn.js",
+          "description": "Warn about console.log in new files",
+          "timeout": 5,
+          "async": false,
+          "profile": "standard"
+        }
+      ],
+      "MultiEdit": [
+        {
+          "id": "post:multi:quality-gate",
+          "type": "command",
+          "command": "node hooks/scripts/quality-gate.js",
+          "description": "Run fast quality checks after edits",
+          "timeout": 30,
+          "async": true,
+          "profile": "standard"
+        }
+      ]
+    },
+    "Stop": [
+      {
+        "id": "stop:console-audit",
+        "type": "command",
+        "command": "node hooks/scripts/stop-console-audit.js",
+        "description": "Check all modified files for console.log",
+        "timeout": 10,
+        "async": false,
+        "profile": "standard"
+      },
+      {
+        "id": "stop:session-summary",
+        "type": "command",
+        "command": "node hooks/scripts/stop-session-summary.js",
+        "description": "Persist session state",
+        "timeout": 10,
+        "async": true,
+        "profile": "minimal"
+      },
+      {
+        "id": "stop:pattern-extraction",
+        "type": "command",
+        "command": "node hooks/scripts/stop-pattern-extraction.js",
+        "description": "Evaluate session for extractable patterns (continuous learning)",
+        "timeout": 15,
+        "async": true,
+        "profile": "standard"
+      },
+      {
+        "id": "stop:cost-tracker",
+        "type": "command",
+          "command": "node hooks/scripts/cost-tracker.js",
+        "description": "Emit lightweight run-cost telemetry markers",
+        "timeout": 5,
+        "async": true,
+        "profile": "minimal"
+      },
+      {
+        "id": "stop:desktop-notify",
+        "type": "command",
+        "command": "node hooks/scripts/desktop-notify.js",
+        "description": "Send desktop notification with task summary",
+        "timeout": 10,
+        "async": true,
+        "profile": "standard"
+      }
+    ],
+    "PreCompact": [
+      {
+        "id": "pre:compact:save-state",
+        "type": "command",
+        "command": "node hooks/scripts/pre-compact-save-state.js",
+        "description": "Save state before context compaction",
+        "timeout": 10,
+        "async": false,
+        "profile": "minimal"
+      }
+    ],
+    "SessionEnd": [
+      {
+        "id": "session:end-marker",
+        "type": "command",
+        "command": "node hooks/scripts/session-end.js",
+        "description": "Lifecycle marker and cleanup log",
+        "timeout": 10,
+        "async": false,
+        "profile": "minimal"
+      }
+    ]
+  },
+  "runtimeControls": {
+    "profileEnv": "ECC_HOOK_PROFILE",
+    "disabledEnv": "ECC_DISABLED_HOOKS",
+    "defaultProfile": "standard"
+  }
+}

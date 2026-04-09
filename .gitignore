@@ -1,0 +1,40 @@
+# Git Ignore for OpenClaw Toolkit
+
+# Logs
+logs/
+*.log
+
+# Backup files
+*backup*.csv
+*.backup.*
+
+# Temporary files
+*.tmp
+*.temp
+.cache/
+
+# IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Python cache
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+
+# Generated reports (keep source, ignore generated)
+reports/daily/
+reports/weekly/
+!reports/README.md
+
+# Large data files
+*.xlsx
+*.docx
+*.pdf
+
+# Local config
+.local_config.json
+*.local.*
